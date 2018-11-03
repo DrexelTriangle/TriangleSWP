@@ -5,7 +5,7 @@ DESCRIPTION
 
 **The Triangle SWP** also features several customizable menus, html and content list widgets which enable live-site editing from the frontend.
 
-This theme also incorporates several 3rd-party services (Open weather data integration for any wetaher station in the world, Disqus article comments, OpenX advertisements, Google Custom Search Engine).
+This theme also incorporates several 3rd-party services (Open weather data integration for any weather station in the world, Disqus article comments, OpenX advertisements, Google Custom Search Engine).
 
 SETTING UP DEVELOPMENT ENVIRONMENT
 ----------------------------------
@@ -15,18 +15,27 @@ For information and explanation of the theme structure, please see http://superd
 This Superdesk Publisher theme uses Gulp workflow automation (http://gulpjs.com/). 
 
 **To set-up the working environment for theme development, you can follow these steps:**
-- Follow the Superdesk Pubisher installation instructions found at https://superdesk-publisher.readthedocs.io/en/latest/manual/getting_started/superdesk-superdesk-publisher-setup.html#how-to-install-superdesk-publisher
-- In the Superdesk Publisher directory, create a new directory called `dev`
+- Follow the Superdesk Publisher installation instructions found at https://superdesk-publisher.readthedocs.io/en/latest/manual/getting_started/superdesk-superdesk-publisher-setup.html#how-to-install-superdesk-publisher
+- Be sure to write down and save your organization and tenant codes
+- Ensure you have the latest versions of NodeJS and NPM installed on your system
+- Clone the theme from Azure DevOps into the root Publisher folder (https://thetriangle.visualstudio.com/TriangleSWP/_git/TriangleSWP)
+- Install and activate the theme using `sudo -u www-data SYMFONY_ENV=prod php app/console swp:theme:install <tenant_code> TriangleSWP/ -f --activate -p`
+- Install the theme assets using `sudo -u www-data SYMFONY_ENV=prod php app/console sylius:theme:assets:install`
+- Delete the original repository clone that is in the Publisher root directory
+- Navigate to `app/themes/<tenant_code>/TriangleSWP`
+- Run the command `npm install --save-dev` to install dependencies for Gulp
+- Nagivate to your Publisher instance in your web browser to check that everything is working
 
-**To download and modify the theme source code:**
-- Clone the theme from Azure DevOps using Visual Studio Code (https://thetriangle.visualstudio.com/TriangleSWP/_git/TriangleSWP)
 - Make sure Gulp is working on your system (how to get it up and running see here: https://github.com/gulpjs/gulp/blob/master/docs/getting-started.md)
-- Gulp file is already there in theme. It has all necessary methods already implemented. For development purposes, you can simply fire the task 'watch' and it will automatically a) compile and add all css/scss/sass changes from `public/css/` to `public/dist/style.css`
+
+**To modify and build the theme source code:**
+- Navigate to your Publisher instance in a file explorer and go to `app/themes/<tenant_code>/TriangleSWP`. Edit the source code files here. Opening the folder in Visual Studio Code is recommended
+- Start the Gulp task 'watch' and it will automatically
+a) compile and add all css/scss/sass changes from `public/css/` to `public/dist/style.css`
 b) add all js changes from `public/js/` to `public/dist/all.js` file
+- If you're running 'gulp watch' but not seeing changes reflected in your browser window, make sure you have browser caching turned off
 - For applying changes for production, there is the task 'build' which will also minify css and js and add specific version to these files (to prevent browser caching issues)
 - You can also manually run tasks `sass`, `js`, `cssmin`, `jsmin`, `version`, as well as `sw` (service worker steps that ensure propper pre-caching on browser side)
-- When developing new features, create a new branch for each user story. Commit to this branch.
-- When finished developing a feature, do a `git fetch` and merge your branch into master. Once merged, delete the branch you created for your feature.
 
 BRANCHING AND MERGING STRATEGY
 ------------------------------
