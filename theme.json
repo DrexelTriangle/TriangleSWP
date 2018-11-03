@@ -1,25 +1,25 @@
 {
-    "name": "swp/daily-theme",
-    "title": "Daily News Theme",
-    "description": "Superdesk Web Publisher Daily News theme",
+    "name": "triangleSWP",
+    "title": "The Triangle News Theme",
+    "description": "The Triangle Web Publisher theme",
     "authors": [
         {
-            "name": "Sourcefabric z.ú.",
-            "email": "contact@sourcefabric.org",
-            "homepage": "https://www.sourcefabric.org",
+            "name": "The Triangle Solution Delivery Team",
+            "email": "web@thetriangle.org",
+            "homepage": "https://www.thetriangle.org",
             "role": "Organization"
         }
     ],
     "screenshots": [
         {
             "path": "screenshot.png",
-            "title": "Daily News Theme"
+            "title": "The Triangle News Theme"
         }
     ],
     "settings": {
         "primary_color": {
             "label": "Primary Color",
-            "value": "#00a9e1",
+            "value": "#07294D",
             "type": "string"
         },
 
@@ -57,37 +57,21 @@
     "generatedData": {
         "routes": [
             {
-                "name": "Local",
-                "slug": "local",
+                "name": "News",
+                "slug": "news",
                 "type": "collection",
                 "templateName": "category.html.twig",
                 "articlesTemplateName": "article.html.twig",
                 "numberOfArticles": 4
             },
             {
-                "name": "Business",
-                "slug": "business",
+                "name": "Opinion",
+                "slug": "opinion",
                 "type": "collection",
                 "templateName": "category.html.twig",
                 "articlesTemplateName": "article.html.twig",
                 "numberOfArticles": 4
             },  
-            {
-                "name": "Lifestyle",
-                "slug": "lifestyle",
-                "type": "collection",
-                "templateName": "category.html.twig",
-                "articlesTemplateName": "article.html.twig",
-                "numberOfArticles": 4
-            },
-            {
-                "name": "Culture",
-                "slug": "culture",
-                "type": "collection",
-                "templateName": "category.html.twig",
-                "articlesTemplateName": "article.html.twig",
-                "numberOfArticles": 4
-            },
             {
                 "name": "Sports",
                 "slug": "sports",
@@ -97,8 +81,8 @@
                 "numberOfArticles": 4
             },
             {
-                "name": "Opinion",
-                "slug": "opinion",
+                "name": "Entertainment",
+                "slug": "entertainment",
                 "type": "collection",
                 "templateName": "category.html.twig",
                 "articlesTemplateName": "article.html.twig",
