@@ -24,9 +24,8 @@ This Superdesk Publisher theme uses Gulp workflow automation (http://gulpjs.com/
 - Delete the original repository clone that is in the Publisher root directory
 - Navigate to `app/themes/<tenant_code>/TriangleSWP`
 - Run the command `npm install --save-dev` to install dependencies for Gulp
+- Run `gulp build` to check that Gulp and its dependencies are correctly installed
 - Nagivate to your Publisher instance in your web browser to check that everything is working
-
-- Make sure Gulp is working on your system (how to get it up and running see here: https://github.com/gulpjs/gulp/blob/master/docs/getting-started.md)
 
 **To modify and build the theme source code:**
 - Navigate to your Publisher instance in a file explorer and go to `app/themes/<tenant_code>/TriangleSWP`. Edit the source code files here. Opening the folder in Visual Studio Code is recommended
