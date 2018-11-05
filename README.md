@@ -33,6 +33,7 @@ This Superdesk Publisher theme uses Gulp workflow automation (http://gulpjs.com/
 a) compile and add all css/scss/sass changes from `public/css/` to `public/dist/style.css`
 b) add all js changes from `public/js/` to `public/dist/all.js` file
 - If you're running 'gulp watch' but not seeing changes reflected in your browser window, make sure you have browser caching turned off
+- If modifying Twig template files, you may need to run `sudo -u www-data SYMFONY_ENV=prod php app/console cache:clear` in the Publisher root directory to see changes
 - For applying changes for production, there is the task 'build' which will also minify css and js and add specific version to these files (to prevent browser caching issues)
 - You can also manually run tasks `sass`, `js`, `cssmin`, `jsmin`, `version`, as well as `sw` (service worker steps that ensure propper pre-caching on browser side)
 
