@@ -18,10 +18,10 @@ This Superdesk Publisher theme uses Gulp workflow automation (http://gulpjs.com/
 - Follow the Superdesk Publisher installation instructions found at https://superdesk-publisher.readthedocs.io/en/latest/manual/getting_started/superdesk-superdesk-publisher-setup.html#how-to-install-superdesk-publisher
 - Be sure to write down and save your organization and tenant codes
 - Ensure you have the latest versions of NodeJS and NPM installed on your system
-- Clone the theme from Azure DevOps into the root Publisher folder (https://thetriangle.visualstudio.com/TriangleSWP/_git/TriangleSWP)
-- Install and activate the theme using `sudo -u www-data SYMFONY_ENV=prod php app/console swp:theme:install <tenant_code> TriangleSWP/ -f --activate -p`
+- Clone the theme from Azure DevOps into publisher/src/SWP/Bundle/FixturesBundle/Resources/theme (https://thetriangle.visualstudio.com/TriangleSWP/_git/TriangleSWP)
+- Install and activate the theme using `sudo -u www-data SYMFONY_ENV=prod php app/console swp:theme:install <tenant_code> src/SWP/Bundle/FixturesBundle/Resources/theme/TriangleSWP/ -f --activate -p`
 - Install the theme assets using `sudo -u www-data SYMFONY_ENV=prod php app/console sylius:theme:assets:install`
-- Delete the original repository clone that is in the Publisher root directory
+- Delete the original repository clone that is in the src/SWP/Bundle/FixturesBundle/Resources/theme directory
 - Navigate to `app/themes/<tenant_code>/TriangleSWP`
 - Run the command `npm install --save-dev` to install dependencies for Gulp
 - Run `gulp build` to check that Gulp and its dependencies are correctly installed
