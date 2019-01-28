@@ -28,22 +28,19 @@
         {# Print author information to page #}
 				{% if gimme.article.authors  %}
           {% for author in gimme.article.authors %}
-            <span class="articleMetadata__byline">          
-              <figure class="articleMetadata__image">
-                <a href="{{ url('Authors', { 'authorSlug' : author.slug }) }}"><img alt="{{ author.name }}" src="{{ url(author.avatar) }}" /></a>
-              </figure> by <a href="{{ url('Authors', { 'authorSlug' : author.slug }) }}">{{ author.name }}</a>
-            </span>
+            {# TODO: handle formatting if multiple authors #}
+            By <a href="{{ url('Authors', { 'authorSlug' : author.slug }) }}">{{ author.name }}</a>
           {% endfor %}
         {% elseif gimme.article.metadata.byline %}
           By {{ gimme.article.metadata.byline }}
         {% endif %}
 
         {# Print date of article #}
-        <time class="date" datetime="{{ gimme.article.publishedAt|date("c") }}">{{ gimme.article.publishedAt|date("d F Y, H:i \\h") }}</time>
+        <time class="date" datetime="{{ gimme.article.publishedAt|date("c") }}">{{ gimme.article.publishedAt|date("M. j, Y") }}</time>
 
         {# Print when article was updated, if it was updated #}
         {% if gimme.article.publishedAt != gimme.article.updatedAt %}
-          <span class="articleMetadata__info">updated <span class="articleMetadata__updated">{{ gimme.article.updatedAt|date("d F Y, H:i \\h") }}</span></span>
+          <span class="articleMetadata__info">updated <span class="articleMetadata__updated">{{ gimme.article.updatedAt|date("M. j, Y") }}</span></span>
         {% endif %}
 
         {# Print share buttons #}
