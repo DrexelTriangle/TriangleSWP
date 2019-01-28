@@ -26,7 +26,7 @@
 		<div class="single-meta">
 			<div class="author">
         {# Print author information to page #}
-				{% if gimme.article.authors  %}
+        {% if gimme.article.authors  %}
           {% for author in gimme.article.authors %}
             {# TODO: handle formatting if multiple authors #}
             By <a href="{{ url('Authors', { 'authorSlug' : author.slug }) }}">{{ author.name }}</a>
@@ -43,9 +43,13 @@
           <span> - updated <span>{{ gimme.article.updatedAt|date("M. j, Y") }}</span></span>
         {% endif %}
 
-        {# Print share buttons #}
+        {# TODO: Print share buttons #}
 			</div>
 		</div>
+
+    <div class="single-return">
+      <a href="/">🠘 Return to home</a>
+    <div>
 	</div>
 
   <div class="generic-flex-container">
