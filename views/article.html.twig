@@ -19,7 +19,7 @@
 		<!-- TODO: put logo for print  -->
 		
 		<div class="single-title">
-      <h1> {{ gimme.article.title }} </h1>
+      <h1>{{ gimme.article.title }}</h1>
       <p>{{ gimme.article.lead|raw }}</p>
     </div>
 
@@ -98,7 +98,9 @@
     </main>
 
     <aside class="flex-sidebar">
-      <!-- TODO: put widget area here -->
+      {# Define empty container for use with LiveSite editor #}
+      {% container 'globalSidebar' %}
+      {% endcontainer %}
     </aside>
   </div>
 
