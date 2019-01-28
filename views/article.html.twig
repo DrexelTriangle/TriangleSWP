@@ -3,103 +3,116 @@
 {% block body %}
 
 <div id="blueimp-gallery" class="blueimp-gallery blueimp-gallery-controls">
-     <div class="slides"></div>
-     <h3 class="title"></h3>
-    <a class="prev">‹</a>
-     <a class="next">›</a>
-     <a class="close">×</a>
-     <a class="play-pause"></a>
-     <ol class="indicator"></ol>
+  <div class="slides"></div>
+  <h3 class="title"></h3>
+  <a class="prev">‹</a>
+  <a class="next">›</a>
+  <a class="close">×</a>
+  <a class="play-pause"></a>
+  <ol class="indicator"></ol>
 </div>
 
-<main class="container">
-  <div class="row">
-    <div class="article col-md-9 col-sm-12 col-xs-12">
-      <article>
-        <span class="article__kicker">Lorem ipsum</span>
-        <h2 class="article__headline marginBottom30"> {{ gimme.article.title }}</h2>
-        <div class="article__lead">
-          <p>{{ gimme.article.lead|raw }}</p>
-        </div>
+<div class="generic-wrapper">
+	<!-- TODO: put global banner top here  -->
 
-        <div class="articleMetadata marginBottom30">
-        {% if gimme.article.authors %}
-            {% for author in gimme.article.authors %} 
-            <span class="articleMetadata__byline">          
-                <figure class="articleMetadata__image">
-                  <a href="{{ url('Authors', { 'authorSlug' : author.slug }) }}"><img alt="{{ author.name }}" src="{{ url(author.avatar) }}" /></a>
-                </figure> by <a href="{{ url('Authors', { 'authorSlug' : author.slug }) }}">{{ author.name }}</a>
-            </span>
-            {% endfor %}
-          {% elseif gimme.article.metadata.byline %}
-          <span class="articleMetadata__byline">by {{ gimme.article.metadata.byline }}</span>
-          {% endif %}
-          <time class="articleMetadata__info hidden-xs" datetime="{{ gimme.article.publishedAt|date("c") }}">{{ gimme.article.publishedAt|date("d F Y, H:i \\h") }}</time>
-          {% if gimme.article.publishedAt != gimme.article.updatedAt %}
-          <span class="articleMetadata__info">updated <span class="articleMetadata__updated">{{ gimme.article.updatedAt|date("d F Y, H:i \\h") }}</span></span>
-          {% endif %}
-          <span class="articleMetadata__share">Share</span>
-        </div>
+	<div class="generic-container" style="margin-bottom: 0px;">
+		<!-- TODO: put logo for print  -->
+		
+		<div class="single-title">
+      <h1>{{ gimme.article.title }}</h1>
+      <p>{{ gimme.article.lead|raw }}</p>
+    </div>
 
+		<div class="single-meta">
+			<div class="author">
+        {# Print author information to page #}
+        {% if gimme.article.authors  %}
+          {% for author in gimme.article.authors %}
+            {# TODO: handle formatting if multiple authors #}
+            By <a href="{{ url('Authors', { 'authorSlug' : author.slug }) }}">{{ author.name }}</a>
+          {% endfor %}
+        {% elseif gimme.article.metadata.byline %}
+          By {{ gimme.article.metadata.byline }}
+        {% endif %}
+
+        {# Print date of article #}
+        <time class="date" datetime="{{ gimme.article.publishedAt|date("c") }}">{{ gimme.article.publishedAt|date("M. j, Y") }}</time>
+
+        {# Print when article was updated, if it was updated #}
+        {% if gimme.article.publishedAt != gimme.article.updatedAt %}
+          <span> - updated <span>{{ gimme.article.updatedAt|date("M. j, Y") }}</span></span>
+        {% endif %}
+
+        {# TODO: Print share buttons #}
+			</div>
+		</div>
+
+    <div class="single-return">
+      <a href="/">🠘 Return to home</a>
+    </div>
+	</div>
+
+  <div class="generic-flex-container">
+    <main id="content" class="flex-main">
+      <article class="single-content">
+        {# Set default image attributes #}
         {% set imgCaption = "Default image" %}
         {% set rend1250 = "{{ asset('theme/img/article_img/1250x600.png') }}" %}
 
+        {# Get article featured image and set custom attributes #}
         {% if gimme.article.featureMedia %}
           {% gimme rendition with { 'media': gimme.article.featureMedia, 'name': '1250x600', 'fallback': 'original' } %}
-              {% set rend1250 = path(rendition) %}
-              {% set imgCaption = gimme.article.featureMedia.description %}
+            {% set rend1250 = path(rendition) %}
+            {% set imgCaption = gimme.article.featureMedia.description %}
           {% endgimme %}
         {% endif %}
 
         {% gimme rendition with { 'name': '1250x600', 'fallback': 'original' } %}
-              {% set rend1250 = path(rendition) %}
+          {% set rend1250 = path(rendition) %}
         {% endgimme %}
 
         <figure>
-              <img src="{{ rend1250 }}" alt="{{ imgCaption }}" width="930" height="450" }}" />
-              <figcaption>{{ imgCaption }}</figcaption>
+          <img src="{{ rend1250 }}" alt="{{ imgCaption }}" width="930" height="450" />
+          <figcaption>{{ imgCaption }}</figcaption>
         </figure>
+        
+        {# Print article content #}
+        <p>{{ gimme.article.body|raw }}</p>
 
-        <div class="article__text marginTop30">
-          <p>{{ gimme.article.body|raw }}</p>
-
-          {# 
-          <blockquote>
-            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed eu enim in velit bibendum gravida nec et odio.</p>
-            <footer>
-              <cite>
-                <span>- Diane Long</span>
-              </cite>
-            </footer>
-          </blockquote>
-          #}
-
-          {#
-          <div class="article__entrefilet article__floatLeft">
-            <h3>Entrefilet</h3>
-            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed eu enim in velit bibendum gravida nec et odtio. Cras congue, orci vitae eleifend congue, felis mi tincidunt risus, et lobortis turpis ex vel velit. Nullam pellentesque tempor magna a fermentum.</p>
-          </div>
-          #}
-
-          {% for keyword in gimme.article.keywords %}
-          {% if loop.first %}
-          <ul class="article__keywords">
-            <li>Keywords: </li>
-            {% endif %}  
-                <li><a href="{{ url('trending') }}?kw={{ keyword }}">{{ keyword }}</a></li>
-            {% if loop.last %}  
-          </ul>
-          {% endif %}
-          {% endfor %}
-
-          {% include 'partials/slideshow.html.twig' %}
-
-        </div>
-        <div id="disqus_thread"></div>
-
+        {# TODO: decide if and how the article image gallery will be used #}
+        {#% include 'partials/slideshow.html.twig' %#}
       </article>
 
-      <div class="row">
+      <div id="comments" class="single-comments">
+        {# Load comments template into page - will load in iframe #}
+        <div id="disqus_thread"></div>
+      </div>
+
+      {# TODO: print keywords/tags to page #}
+      {#% for keyword in gimme.article.keywords %}
+      {% if loop.first %}
+      <ul class="article__keywords">
+        <li>Keywords: </li>
+        {% endif %}  
+            <li><a href="{{ url('trending') }}?kw={{ keyword }}">{{ keyword }}</a></li>
+        {% if loop.last %}  
+      </ul>
+      {% endif %}
+      {% endfor %#}
+    </main>
+
+    <aside class="flex-sidebar">
+      {# Define empty container for use with LiveSite editor #}
+      {% container 'globalSidebar' %}
+      {% endcontainer %}
+    </aside>
+  </div>
+
+	<!-- TODO: put global banner bottom here -->
+</div>
+
+      <!-- related articles section -->
+      {#<div class="row">
         <div class="col-md-12 col-sm-12 col-xs-12">
 
           <h3 class="sectionHeadingBold marginTop30"><a href="{{path(gimme.article.route)}}">More from {{ gimme.article.route.name|capitalize }}</a></h3>
@@ -168,13 +181,8 @@
           <span class="article__arrows__pointer">Next article</span>
         </div>
       </a>
-    </div>
-      
-  </div>
-
-</main>
+    </div>#}
 
 {{ countPageView(gimme.article) }}
-
 
 {% endblock %}
