@@ -2,6 +2,21 @@
 
 {% block body %}
 
+<div class="generic-wrapper">
+	<!-- TODO: insert global banner top -->
+
+	<header id="header-frontpage" class="frontpage-header">
+		<div class="frontpage-logo">
+			<img src="{{ asset('theme/img/logo-black.svg') }}"></img>
+		</div>
+    {% container 'mainNav' %}
+      {# Content of this container is defined by menu widget which is linked to it. Template used for this menu is widgets/menu1.html.twig #}
+    {% endcontainer %}
+	</header>
+
+  <!-- TODO: insert front page stories -->
+</div>
+
   <main class="container">
     <div class="row">
       <div class="col-md-9 col-sm-12 col-xs-12">
