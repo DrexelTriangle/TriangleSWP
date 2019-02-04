@@ -1,4 +1,4 @@
-{% set version = '1548684176134' %}
+{% set version = '1548823726288' %}
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -25,7 +25,6 @@
   <link href="https://fonts.googleapis.com/css?family=Merriweather:300,400,700,900|Source+Sans+Pro:300,400,600,700&amp;subset=latin-ext" rel="stylesheet">
 
   <link rel="stylesheet" href="/public/dist/style.css" />
-
     <style>
 
       .accordion .accordion__sectionTitle.active, .editorialComment, .stripBox .stripBox__title.active, .gallery .gallery__strip, .button--color, .articleMetadata .articleMetadata__updated {
@@ -56,11 +55,11 @@
 
   <div id="fb-root"></div>
   <script>(function(d, s, id) {
-  var js, fjs = d.getElementsByTagName(s)[0];
-  if (d.getElementById(id)) return;
-  js = d.createElement(s); js.id = id;
-  js.src = "//connect.facebook.net/en_US/sdk.js#xfbml=1&version=v2.7";
-  fjs.parentNode.insertBefore(js, fjs);
+    var js, fjs = d.getElementsByTagName(s)[0];
+    if (d.getElementById(id)) return;
+    js = d.createElement(s); js.id = id;
+    js.src = "//connect.facebook.net/en_US/sdk.js#xfbml=1&version=v2.7";
+    fjs.parentNode.insertBefore(js, fjs);
   }(document, 'script', 'facebook-jssdk'));</script>
 
   <script>(function() {
@@ -173,53 +172,46 @@
 {% block body %}{% endblock %}
 
 <!-- Footer -->
+<footer id="colophon" class="footer-wrapper">
+	<div class="footer-container">
+		<div class="footer-branding">
+			<div class="footer-logo">
+				<a href="{{ url('home') }}"><img src="{{ asset('theme/img/logo-black.svg') }}"></a>
+			</div>
+			
+		  <div class="footer-social">
+        <a href="https://www.facebook.com/drexel.triangle/" target="_blank"><img src="{{ asset('theme/img/social-fb.svg') }}"></a>
+        <a href="https://twitter.com/drexeltriangle" target="_blank"><img src="{{ asset('theme/img/social-tw.svg') }}"></a>
+        <a href="https://www.instagram.com/drexeltriangle/" target="_blank"><img src="{{ asset('theme/img/social-in.svg') }}"></a>
+        <a href="https://www.youtube.com/user/DrexelTriangle" target="_blank"><img src="{{ asset('theme/img/social-yt.svg') }}"></a>
+        <a href="http://thetriangle.us2.list-manage.com/subscribe/post?u=6eb4aab81745d3436b16a6181&id=7389750c95" target="_blank"><img src="{{ asset('theme/img/email.svg') }}"></a>
+			</div>
+			
+			<div class="footer-tagline">
+				THE INDEPENDENT STUDENT NEWSPAPER AT DREXEL UNIVERSITY SINCE 1926
+			</div>
+		</div>
+    
+    <nav class="footer-nav-container">
+      <ul class="footer-nav-links">
+        <!--TODO add links for new website-->
+        {% set menu_names = ["Home", "News", "Opinion", "A&E", "Sports", "Donate", "About", "Staff", "Advertising", "Classifieds", "Join", "Contact"] %}
+        {% for name in menu_names %}
+          <li><a href="#">{{ name }}</a></li>
+        {% endfor %}
+      </ul>
+    </nav>
 
-<footer class="footer marginTop30">
-  <div class="container">
-    <div class="row">
-
-      <div class="footer__logo col-md-3 col-sm-3 col-xs-12">
-        <a href="{{ url('home') }}"><img src="{{ asset('theme/img/logo-white.svg') }}"></a>
-      </div>
-
-{% container 'footerNav' %}
-
-<!-- Content of this container is defined by menu widget which is linked to it. Template used for this menu is widgets/menu2.html.twig -->
-
-{% endcontainer %}      
-
-      <div class="footer__section col-sm-2 col-md-2 col-xs-12">
-        <h4 class="footer__sectionHeadline">Social</h4>
-        <ul>
-          <li><a href="https://www.facebook.com/Superdesk/">Facebook</a></li>
-          <li><a href="https://twitter.com/Sourcefabric">Twitter</a></li>
-          <li><a href="https://www.youtube.com/user/Sourcefabric">Youtube</a></li>
-          <li><a href="https://plus.google.com/+SourcefabricOrgHQ">Google+</a></li>
-        </ul>
-      </div>
-
-      <div class="footer__subscribe col-sm-3 col-md-3 col-xs-12">
-        <h4 class="footer__sectionHeadline">Subscribe</h4>
-
-        <div class="footer__subscribeForm">
-          <form class="form" method="get" action="/register">
-            <input type="text" name="proposed_email" placeholder="Your email">
-            <button class="footer__subscribeButton button button--color" type="submit">Send</button>
-          </form>
-        </div>
-
-        <div class="footer__text">
-          <p>© 2017 Sourcefabric All Rights Reserved <br>
-          <a href="#">Terms of Use</a> / <a href="#">Privacy Policy</a></p>
-        </div>
-
-      </div>
-
+    </div>     
+    <div class="footer-copyright">
+      ©{{ "now"|date("Y") }} The Triangle. All rights are reserved, except where otherwise noted.
     </div>
-  </div>
+    <div class="footer-disclaimer">
+      The Triangle is an independent student organization and is not owned nor operated by Drexel University.
+    </div>
 </footer>
 
-  <script src="/public/dist/all.js"></script>
+<script src="/public/dist/all.js"></script>
 
 <script id="dsq-count-scr" src="//superdeskdailynews.disqus.com/count.js" async></script>
 
@@ -248,5 +240,5 @@
     });
 </script>
 
-  </body>
-  </html>
+</body>
+</html>
