@@ -14,3 +14,7 @@ sftp-config.json
 .grunt
 .sass-cache/
 package-lock.json
+
+public/dist/all.js
+public/dist/style.css
+public/dist/style.css.map
