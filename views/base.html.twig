@@ -118,7 +118,7 @@
     </div>
   </div>
 
-  <header class="header">
+  {#<header class="header">
 
     <div class="container">
 
@@ -142,13 +142,7 @@
 
     </div>
 
-  </header>
-
-{% container 'mainNav' %}
-
-{# Content of this container is defined by menu widget which is linked to it. Template used for this menu is widgets/menu1.html.twig #}
-
-{% endcontainer %}
+  </header>#}
 
   {% gimmelist author from authors|limit(3) with { role: ["featured"] } %}
   {% if loop.first %}
