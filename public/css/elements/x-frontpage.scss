@@ -17,6 +17,13 @@
 			width: 98%;
 		}
 	}
+
+	// Workaround until we figure out how to control classes of SWP menus
+	.swp_container
+	{
+		padding: 0px;
+		width: 100%;
+	}
 		
 	.frontpage
 	{
@@ -25,7 +32,7 @@
 		border-top: 2px solid black;
 		@include display-flex();
 		list-style-type: none;
-		margin-top: 15px;
+		margin-top: 20px;
 		padding: 0;
 		width: 100%;
 		
