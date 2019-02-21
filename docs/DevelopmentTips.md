@@ -17,6 +17,9 @@ Autocompile Twig Template changes
 - Go to publisher/app/config/. Open config.yml, under `twig:` put the line `auto-reload: true`
 - You may have to run `sudo -u www-data SYMFONY_ENV=prod php app/console cache:clear` once more
 
+Edit Java Runtime Memory Size
+- If you are running on a low-memory machine, set your java runtime to use less memory with `java -Xmx1024m -Xms128m`
+
 TIPS
 -----------------------
 - If changes are not registering, clearing the cache and/or running gulp build usually fixes this.
