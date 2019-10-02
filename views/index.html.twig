@@ -9,9 +9,16 @@
 		<div class="frontpage-logo">
 			<img src="{{ asset('theme/img/logo-black.svg') }}"></img>
 		</div>
-	{% container 'mainNav' %}
-	  {# Content of this container is defined by menu widget which is linked to it. Template used for this menu is widgets/menu1.html.twig #}
-	{% endcontainer %}
+		<nav>
+			<div>
+				<ul class="frontpage">
+					<li><a href="/news/">News</a></li>
+					<li><a href="/opinion/">Opinion</a></li>
+					<li><a href="/entertainment/">Arts &amp; Entertainment</a></li>
+					<li><a href="/sports/">Sports</a></li>
+				</ul>
+			</div>
+		</nav>
 	</header>
 
   <!-- TODO: insert front page stories -->
