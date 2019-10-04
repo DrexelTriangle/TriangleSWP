@@ -1,0 +1,37 @@
+.frontpage-category-main
+{
+	width: 100%;	
+}
+
+@media screen and (max-width: $screen-target-min)
+{
+	.frontpage-category-title
+	{
+		margin-bottom: 0px;
+	}
+
+	.frontpage-category-main
+	{
+		display: inline-block;
+		padding-bottom: 10px;
+		width: 100%;
+		
+		img
+		{
+			display: none;
+		}
+		
+		ul
+		{
+			display: inline-block !important;
+			height: auto;
+			margin: 0px;
+			width: 100%;
+		}
+		
+		p
+		{
+			display: none;
+		}
+	}
+}

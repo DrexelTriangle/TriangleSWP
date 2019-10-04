@@ -12,19 +12,56 @@
 		<nav>
 			<div>
 				<ul class="frontpage">
-					<li><a href="/news/">News</a></li>
-					<li><a href="/opinion/">Opinion</a></li>
-					<li><a href="/entertainment/">Arts &amp; Entertainment</a></li>
-					<li><a href="/sports/">Sports</a></li>
+					<li><a href="/news">News</a></li>
+					<li><a href="/opinion">Opinion</a></li>
+					<li><a href="/entertainment">Arts &amp; Entertainment</a></li>
+					<li><a href="/sports">Sports</a></li>
 				</ul>
 			</div>
 		</nav>
 	</header>
 
-  <!-- TODO: insert front page stories -->
+	<div class="generic-container">
+		{% include 'partials/frontpage-section-news.html.twig'  %}
+	</div>
+
+	<div class="generic-flex-container">
+		<main class="flex-main">
+			<section id="section-entertainment" class="frontpage-category-main">
+				<h1 class="frontpage-category-title"><a href="{{ url('entertainment') }}">Entertainment</a></h1>
+
+				{% include 'partials/frontpage-section-generic.html.twig' %}
+			</section>
+	  	</main>
+				
+		
+		<aside class="flex-sidebar">
+			<div id="tx_social_widget-2" class="sidebar-item widget_tx_social_widget">
+				<div class="sidebar-title">Follow Us</div>
+				<ul class="social-links">
+					<li class="social-item">
+						<i class="fa fa-facebook" style="color: #3b5998;"></i>
+						<a href="https://www.facebook.com/drexel.triangle/" target="_blank">Drexel Triangle</a>
+					</li>
+					<li class="social-item">
+						<i class="fa fa-twitter" style="color: #00acee;"></i>
+						<a href="https://twitter.com/drexeltriangle" target="_blank">@DrexelTriangle</a>
+					</li>
+					<li class="social-item">
+						<i class="fa fa-instagram text-instagram"></i>
+						<a href="https://www.instagram.com/drexeltriangle/" target="_blank">@drexeltriangle</a>
+					</li>
+					<li class="social-item">
+						<i class="fa fa-youtube-play" style="color: #e52d27;"></i>
+						<a href="https://www.youtube.com/user/DrexelTriangle" target="_blank">DrexelTriangle</a>
+					</li>
+				</ul>
+			</div>
+		</aside>
+	</div>
 </div>
 
-  <main class="container">
+  {#<main class="container">
 	<div class="row">
 	  <div class="col-md-9 col-sm-12 col-xs-12">
 
@@ -215,5 +252,5 @@
 	</div>
 
 
-  </main>
+  </main>#}
   {% endblock %}
