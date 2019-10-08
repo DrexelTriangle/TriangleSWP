@@ -1,0 +1,30 @@
+<div class="category-post">
+	{# Left box - date #}
+	<div class="category-date">%1$s</div>', get_the_date('M. j, Y')
+
+	{# Middle box flex - headline, author, and excerpt #}
+	<div class="category-post-info">
+		<a class="text-headline-medium" href="{{ url(article) }}">{{ article.title }}</a>
+
+		{% if article.lead == "" %}
+      		<div class="category-tease">{{ article.body|striptags|safeTruncate(160,"...") }}</div>
+    	{% else %}
+      		<div class="category-tease">{{ article.lead|striptags|safeTruncate(160,"...") }}</div>
+    	{% endif %}
+
+		{% if article.authors %}
+			{% for author in article.authors %} 
+				<div class="category-author">By {{ author.name }}</div>
+			{% endfor %}
+			{% elseif article.metadata.byline %}
+				<div class="category-author">By {{ article.metadata.byline }}</div>
+		{% endif %}
+	</div>
+
+	{# Right box - thumbnail #}
+	{#<a href="%1$s"><div class="category-thumbnail">%2$s</div></a>', $link, get_the_post_thumbnail(null, array('class' => '169-preview-medium')));#}
+	{% set imgCaption = "Default image" %}
+	{% set rend610 = "{{ asset('theme/img/article_img/610x380.png') }}" %}
+
+	{% include 'partials/image610x380.html.twig' with {'imgCaption' : imgCaption, 'rend610' : rend610, 'where' : 'grid' } %}
+</div>

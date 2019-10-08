@@ -2,50 +2,77 @@
 
 {% block body %}
 
-  <main class="container">
-    <div class="row">
-      <div class="col-md-9 col-sm-12 col-xs-12">
+<div id="primary" class="generic-wrapper">
+	<div class="generic-container">
+		{% gimme author with { slug: app.request.attributes.get('authorSlug') } %}
+		{% set currentAuthor = author %}
 
-        {% gimme author with { slug: app.request.attributes.get('authorSlug') } %}
-        {% set currentAuthor = author %} 
+		<figure class="authorMetadata__image"><img src="{{ url(author.avatar) }}"></figure>
+		<h1 class="text-title-large">{{ author.name }}</h1>
+		<p>{{ author.biography }}</p>
 
-        <div class="authorMetadata marginTop30 marginBottom30">       
-          <figure class="authorMetadata__image"><img src="{{ url(author.avatar) }}"></figure>
-          <div class="authorMetadata__infoWrap">
-            <h2>{{ author.name }}</h2>
-            <p>{{ author.biography }}</p>
-            <span id="articlesNo"></span>
-          </div>
-        </div>
+		{% endgimme %}
+	</div>
 
-        {% endgimme %}
+	<div class="generic-flex-container">
+		<main class="flex-main">
+			{% gimmelist article from articles|order('publishedAt','desc') with { 'author': currentAuthor.name, 'route' : 'Authors' } ignoreContext %}
+		
+				{% include 'partials/article-listing.html.twig' %}
 
-        <div class="row">
-          <div class="articleGrid row">
+				{% if loop.last %}
+				<script type="text/javascript">
+					document.getElementById("articlesNo").innerHTML = "{{ loop.length }} articles";
+				</script>
+				{% endif %}
 
-    {% gimmelist article from articles|order('publishedAt','desc') with { 'author': currentAuthor.name, 'route' : 'Authors' } ignoreContext %}
-    
-        {% include 'partials/articleGrid__item.html.twig' with {'class' : 'articleGrid__item--threeColumns col-md-4 col-sm-6 col-xs-12'} %}
+			{% endgimmelist %}
 
-    {% if loop.last %}
-    <script type="text/javascript">
-      document.getElementById("articlesNo").innerHTML = "{{ loop.length }} articles";
-    </script>
-    {% endif %}
+			<div class="category-pagination">
+				<?php posts_nav_link(' ','<< Newer Stories','Older Stories >>'); ?>
+			</div>
+		</main>
 
-    {% endgimmelist %} 
-
-          </div>    
-        </div>
-      </div>
+		<aside class="flex-sidebar">	
+			<!-- TODO: put aside content -->
+		</aside>
+	</div>
+</div>
 
 
-      <div class="col-xs-12 col-sm-12 col-md-3">
 
-        {% include 'elements/most.html.twig' with {'class' : 'marginBottom30'} %}
 
-      </div>
-    </div>
-  </main>
+
+
+		
+
+			
+
+
+
+		{% gimmelist article from articles|order('publishedAt','desc') with { 'author': currentAuthor.name, 'route' : 'Authors' } ignoreContext %}
+		
+				{% include 'partials/articleGrid__item.html.twig' with {'class' : 'articleGrid__item--threeColumns col-md-4 col-sm-6 col-xs-12'} %}
+
+		{% if loop.last %}
+		<script type="text/javascript">
+			document.getElementById("articlesNo").innerHTML = "{{ loop.length }} articles";
+		</script>
+		{% endif %}
+
+		{% endgimmelist %} 
+
+					</div>    
+				</div>
+			</div>
+
+
+			<div class="col-xs-12 col-sm-12 col-md-3">
+
+				{% include 'elements/most.html.twig' with {'class' : 'marginBottom30'} %}
+
+			</div>
+		</div>
+	</main>
 
 {% endblock %}
