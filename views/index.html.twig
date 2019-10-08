@@ -22,15 +22,42 @@
 	</header>
 
 	<div class="generic-container">
-		{% include 'partials/frontpage-section-news.html.twig'  %}
+		{% include 'partials/frontpage-section-news.html.twig'  %}		
 	</div>
 
 	<div class="generic-flex-container">
 		<main class="flex-main">
+			{# Opinion #}
+			<section id="section-entertainment" class="frontpage-category-main">
+				<h1 class="frontpage-category-title"><a href="{{ url('opinion') }}">Opinion</a></h1>
+
+				{# List all articles from current route and limit them to `itemsPerPage` value starting from `start` value #}
+				
+				{% gimmelist article from articles|start(0)|limit(6)|order('publishedAt','desc') with {'route': '/opinion'}  %}
+					{% include 'partials/frontpage-section-generic.html.twig' %}
+				{% endgimmelist %}
+			</section>
+
+			{# Entertainment #}
 			<section id="section-entertainment" class="frontpage-category-main">
 				<h1 class="frontpage-category-title"><a href="{{ url('entertainment') }}">Entertainment</a></h1>
 
-				{% include 'partials/frontpage-section-generic.html.twig' %}
+				{# List all articles from current route and limit them to `itemsPerPage` value starting from `start` value #}
+				
+				{% gimmelist article from articles|start(0)|limit(6)|order('publishedAt','desc') with {'route': '/entertainment'}  %}
+					{% include 'partials/frontpage-section-generic.html.twig' %}
+				{% endgimmelist %}
+			</section>
+
+			{# Sports #}
+			<section id="section-entertainment" class="frontpage-category-main">
+				<h1 class="frontpage-category-title"><a href="{{ url('sports') }}">Sports</a></h1>
+
+				{# List all articles from current route and limit them to `itemsPerPage` value starting from `start` value #}
+				
+				{% gimmelist article from articles|start(0)|limit(6)|order('publishedAt','desc') with {'route': '/sports'}  %}
+					{% include 'partials/frontpage-section-generic.html.twig' %}
+				{% endgimmelist %}
 			</section>
 	  	</main>
 				
