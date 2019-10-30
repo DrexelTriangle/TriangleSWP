@@ -42,7 +42,7 @@
         <time class="date" datetime="{{ gimme.article.publishedAt|date("c") }}">{{ gimme.article.publishedAt|date("M. j, Y") }}</time>
 
         {# Print when article was updated, if it was updated #}
-        {% if gimme.article.publishedAt != gimme.article.updatedAt %}
+        {% if gimme.article.publishedAt|date("M. j, Y") != gimme.article.updatedAt|date("M. j, Y") %}
           <span> - updated <span>{{ gimme.article.updatedAt|date("M. j, Y") }}</span></span>
         {% endif %}
 
