@@ -20,41 +20,42 @@
   {# List all articles from current route and limit them to `itemsPerPage` value starting from `start` value #}          
   {% gimmelist article from articles|start(start)|limit(itemsPerPage)|order('publishedAt','desc') %}
 
-  <div id="section-highlights" class="generic-container">
     {% if loop.first and currentPage == 1 %}
-      {% include 'partials/category-highlights.html.twig' %}
-    {% else %}
-      {% if loop.first %}
-        <div class="generic-flex-container">
-	        <main id="section-articles" class="flex-main">
-      {% endif %}
+      <div id="section-highlights" class="generic-container">
+        {% include 'partials/category-highlights.html.twig' %}
+      </div>
+    {% endif %}
+    
+    {% if loop.first %}
+      <div class="generic-flex-container">
+	      <main id="section-articles" class="flex-main">
+    {% endif %}
 
-            {% include 'partials/article-listing.html.twig' %}
+        {% include 'partials/article-listing.html.twig' %}
+
+    {# Render pagination only at end of list #}
+    {% if loop.last  %}
+        </main>
+      </div>
+
+      {#
+          Use provided by default pagination template
+
+            Parameters:
+            * currentFilters (array) : associative array that contains the current route-arguments
+            * currentPage (int) : the current page you are in
+            * paginationPath (Meta|string) : the route name (or supported by router Meta object) to use for links
+            * lastPage (int) : represents the total number of existing pages
+            * showAlwaysFirstAndLast (bool) : Always show first and last link (just disabled)
+        #}
+        {% include 'partials/pagination.html.twig' with {
+            currentFilters: {}|merge(app.request.query.all()),
+            currentPage: currentPage,
+            paginationPath: gimme.route,
+            lastPage: (loop.totalLength/defaultItemsPerPage)|round()
+        } only %}
 
     {% endif %}
-        {# Render pagination only at end of list #}
-        {% if loop.last  %}
-          </main>
-        </div>
-
-          {#
-              Use provided by default pagination template
-
-                Parameters:
-                * currentFilters (array) : associative array that contains the current route-arguments
-                * currentPage (int) : the current page you are in
-                * paginationPath (Meta|string) : the route name (or supported by router Meta object) to use for links
-                * lastPage (int) : represents the total number of existing pages
-                * showAlwaysFirstAndLast (bool) : Always show first and last link (just disabled)
-            #}
-            {% include 'partials/pagination.html.twig' with {
-                currentFilters: {}|merge(app.request.query.all()),
-                currentPage: currentPage,
-                paginationPath: gimme.route,
-                lastPage: (loop.totalLength/defaultItemsPerPage)|round()
-            } only %}
-
-        {% endif %}
 
   {% endgimmelist %}
 </div>
