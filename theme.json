@@ -104,7 +104,8 @@
                 "name": "Search",
                 "slug": "search",
                 "type": "content",
-                "templateName": "search.html.twig"
+                "templateName": "search.html.twig",
+                "articlesTemplateName": "article.html.twig"
             },
             {
                 "name": "Trending",
