@@ -1,0 +1,48 @@
+{# TODO: insert breaking news if there is any #}
+
+{#<header id="header-global" class="<?php is_front_page() ? print('header-global hidden') : print('header-global') ?>" role="banner">#}
+<header id="header-global" class="header-global" role="banner">
+	<div id="header-search-icon" class="header-search-icon white">
+		<i class="material-icons md-36">search</i>
+	</div>
+	
+	<div class="search-container">
+		<form role="search" method="get" class="search-form" action="">
+			<input id="searchbox-main" type="search" class="search-textbox" placeholder="Search..." value="" name="s">
+		</form>
+	</div>
+	
+	<div class="header-logo">
+		<div class="header-logo-desktop">
+			<a id="triangle-logo" href="/" rel="home">
+				<img src="{{ asset('theme/img/logo-white.svg') }}"></img>
+			</a>
+		</div>
+		<a id="menu-notif" style="color: white; font-size: 12px; right: 60px; position: absolute;">Menu</a>
+	</div>
+	
+	<div class="header-logo-mobile">
+		<div class="img-container">
+			<a href="/" rel="home"><img id="logo-mobile" src="{{ asset('theme/img/tri-icon.png') }}"></img></a>
+		</div>
+	</div>
+
+	<div id="nav-icon" class="header-hamburger-icon white"><span></span><span></span><span></span></div>
+</header>
+
+<div id="nav-main" class="header-nav-container">
+	<div class="menu-main-menu-container">
+		<ul id="menu-main-menu" class="main">
+			<li><a href="/news">News</a></li>
+			<li><a href="/opinion">Opinion</a></li>
+			<li><a href="/entertainment">Entertainment</a></li>
+			<li><a href="/sports">Sports</a></li>
+		</ul>
+	</div>
+
+	<div class="menu-sub-menu-container">
+		<ul id="menu-sub-menu" class="sub">
+			<li><a href="/about">About</a></li>
+		</ul>
+	</div>
+</div>
