@@ -5,150 +5,112 @@
 {# Setup list and pagination parameters #}
 {% set defaultItemsPerPage, itemsPerPage, currentPage = 9, 9, app.request.get('page', 1) %}
 
-{% set start = ((currentPage-1) * itemsPerPage) +1 %}
+{% set start = ((currentPage-1) * itemsPerPage) +5 %}
 
 {% if currentPage == 1 %}
-  {% set itemsPerPage = 10 %}
-  {% set start = 0 %}
+	{% set itemsPerPage = 10 %}
+	{% set start = 4 %}
 {% endif %}
 
 <div class="generic-wrapper">
-  <div class="category-title">
-    <h1 class="text-title-large">{{ gimme.route.name|capitalize }}</h1>
-  </div>
+	<div class="category-title">
+		<h1 class="text-title-large">{{ gimme.route.name|capitalize }}</h1>
+	</div>
 
-  {# List all articles from current route and limit them to `itemsPerPage` value starting from `start` value #}          
-  {% gimmelist article from articles|start(start)|limit(itemsPerPage)|order('publishedAt','desc') %}
+	{# Render the 4 most recent stories if on the first page of the category #}
+	{% if currentPage == 1 %}
+		{% gimmelist article from articles|start(0)|limit(itemsPerPage)|order('publishedAt','desc') %}
 
-    {% if loop.first and currentPage == 1 %}
-      <div id="section-highlights" class="generic-container">
-        {% include 'partials/category-highlights.html.twig' %}
-      </div>
-    {% endif %}
-    
-    {% if loop.first %}
-      <div class="generic-flex-container">
-	      <main id="section-articles" class="flex-main">
-    {% endif %}
+			{% if loop.first %}
+				<div id="section-highlights" class="generic-container">
+					<div class="highlights-container">
+						<div class="highlights-left">
+							<div class="story">			
+								{% include 'partials/category-highlights.html.twig' %}
+							</div>
+						</div>
+			{% endif %}
 
-        {% include 'partials/article-listing.html.twig' %}
+			{% if loop.index == 2 %}
+						<div class="highlights-center">
+							<div class="story">			
+								{% include 'partials/category-highlights.html.twig' %}
+							</div>
+						</div>
+			{% endif %}
 
-    {# Render pagination only at end of list #}
-    {% if loop.last  %}
-        </main>
-      </div>
+			{% if loop.index == 3 %}
+						<div class="highlights-right">
+							<div class="story">
+								<div class="highlights-right-top">					
+									{% include 'partials/category-highlights.html.twig' %}
+								</div>
+			{% endif %}
 
-      {#
-          Use provided by default pagination template
+			{% if loop.index == 4 %}
+								<div class="highlights-right-bottom">	
+									{% include 'partials/category-highlights.html.twig' %}
+								</div>
+							</div>
+						</div>
+			{% endif %}
 
-            Parameters:
-            * currentFilters (array) : associative array that contains the current route-arguments
-            * currentPage (int) : the current page you are in
-            * paginationPath (Meta|string) : the route name (or supported by router Meta object) to use for links
-            * lastPage (int) : represents the total number of existing pages
-            * showAlwaysFirstAndLast (bool) : Always show first and last link (just disabled)
-        #}
-        {% include 'partials/pagination.html.twig' with {
-            currentFilters: {}|merge(app.request.query.all()),
-            currentPage: currentPage,
-            paginationPath: gimme.route,
-            lastPage: (loop.totalLength/defaultItemsPerPage)|round()
-        } only %}
+			{% if loop.last  %}
+					</div>
+				</div>
+			{% endif %}
 
-    {% endif %}
+		{% endgimmelist %}
+	{% endif %}
 
-  {% endgimmelist %}
+	{# List all articles from current route and limit them to `itemsPerPage` value starting from `start` value #}          
+	{% gimmelist article from articles|start(start)|limit(itemsPerPage)|order('publishedAt','desc') %}
+		
+		{# If it's the first iteration of the loop, set up the article list container #}
+		{% if loop.first %}
+			<div class="generic-flex-container">
+				<main id="section-articles" class="flex-main">
+		{% endif %}
+
+		{# Render remaining articles for the page #}
+		{% include 'partials/article-listing.html.twig' %}
+
+		{# Place an inline ad after every 5 articles #}
+		{% if loop.index is divisible by(5) %}
+				</main>
+			</div>
+
+			{% include 'flytedesk/flytedesk-inline.html.twig' %}
+
+			<div class="generic-flex-container">
+				<main id="section-articles" class="flex-main">
+		{% endif %}
+
+		{# If last iteration, close the container and render pagination #}
+		{% if loop.last  %}
+				</main>
+			</div>
+
+			{#
+					Use provided by default pagination template
+
+						Parameters:
+						* currentFilters (array) : associative array that contains the current route-arguments
+						* currentPage (int) : the current page you are in
+						* paginationPath (Meta|string) : the route name (or supported by router Meta object) to use for links
+						* lastPage (int) : represents the total number of existing pages
+						* showAlwaysFirstAndLast (bool) : Always show first and last link (just disabled)
+				#}
+				{% include 'partials/pagination.html.twig' with {
+						currentFilters: {}|merge(app.request.query.all()),
+						currentPage: currentPage,
+						paginationPath: gimme.route,
+						lastPage: (loop.totalLength/defaultItemsPerPage)|round()
+				} only %}
+
+		{% endif %}
+
+	{% endgimmelist %}
 </div>
-
-  <main class="container">
-    <div class="row">
-
-      <div class="col-md-9 col-sm-12 col-xs-12">
-        <div class="row">
-          <div class="col-xs-12">
-            <h3 class="sectionHeadingBold marginTop10 noBorder">{{ gimme.route.name|capitalize }}</h3>
-          </div>
-        </div>
-
-        {# Setup list and pagination parameters #}
-            {% set defaultItemsPerPage, itemsPerPage, currentPage = 9, 9, app.request.get('page', 1) %}
-
-            {% set start = ((currentPage-1) * itemsPerPage) +1 %}
-
-              {% if currentPage == 1 %}
-                  {% set itemsPerPage = 10 %}
-                    {% set start = 0 %}
-              {% endif %}
-
-
-
-            {# List all articles from current route and limit them to `itemsPerPage` value starting from `start` value #}
-            
-              {% gimmelist article from articles|start(start)|limit(itemsPerPage)|order('publishedAt','desc') %}
-
-
-            {% if loop.first and currentPage == 1 %}
-
-              {% include 'partials/mainArticle.html.twig' with {'class' : ''} %}
-
-              <div class="row">
-                <div class="col-md-12 col-sm-12 col-xs-12 pull-right">
-                  <div class="articleGrid row">
-            {% else %}
-
-              {% if loop.first %}
-
-                <div class="row">
-                  <div class="col-md-12 col-sm-12 col-xs-12 pull-right">
-                    <div class="articleGrid row">
-
-              {% endif %}
-
-              {% include 'partials/articleGrid__item.html.twig' with {'class' : 'articleGrid__item--threeColumns col-md-4 col-sm-6 col-xs-12'} %}
-
-            {% endif %}
-                {# Render pagination only at end of list #}
-                {% if loop.last  %}
-                    </div>
-                  </div>
-
-
-                    {#
-                        Use provided by default pagination template
-
-                         Parameters:
-                         * currentFilters (array) : associative array that contains the current route-arguments
-                         * currentPage (int) : the current page you are in
-                         * paginationPath (Meta|string) : the route name (or supported by router Meta object) to use for links
-                         * lastPage (int) : represents the total number of existing pages
-                         * showAlwaysFirstAndLast (bool) : Always show first and last link (just disabled)
-                     #}
-                     {% include 'partials/pagination.html.twig' with {
-                         currentFilters: {}|merge(app.request.query.all()),
-                         currentPage: currentPage,
-                         paginationPath: gimme.route,
-                         lastPage: (loop.totalLength/defaultItemsPerPage)|round()
-                     } only %}
-
-                 {% endif %}
-
-             {% endgimmelist %}
-
-        </div>
-      </div>
-
-      <div class="col-xs-12 col-sm-12 col-md-3">
-
-        {% include 'elements/most.html.twig' with {'class' : 'marginBottom30'} %}
-
-        {% container 'frontSidebar' %}
-
-        {% endcontainer %}
-
-      </div>
-    </div>
-
-  </main>
-
 
 {% endblock %}
