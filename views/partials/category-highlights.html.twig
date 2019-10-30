@@ -13,8 +13,8 @@ printf('<a href="%1$s"><div class="highlights-thumbnail-mobile">%2$s</div></a>',
 
 {% if article.authors %}
 	{% for author in article.authors %} 
-		<div class="category-author">{{ article.updatedAt|date("M. j, Y") }} ago • By {{ author.name }}</div>
+		<div class="category-author">{{ article.updatedAt|date("M. j, Y") }} <!--ago--> • By {{ author.name }}</div>
 	{% endfor %}
 	{% elseif article.metadata.byline %}
-		<div class="category-author">{{ article.updatedAt|date("M. j, Y") }} ago • By {{ article.metadata.byline }}</div>
+		<div class="category-author">{{ article.updatedAt|date("M. j, Y") }} <!--ago--> • By {{ article.metadata.byline }}</div>
 {% endif %}
