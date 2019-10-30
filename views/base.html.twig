@@ -2,242 +2,162 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-  <!-- Always force latest IE rendering engine (even in intranet) & Chrome Frame
-  Remove this if you use the .htaccess -->
-  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+	<!-- Always force latest IE rendering engine (even in intranet) & Chrome Frame
+	Remove this if you use the .htaccess -->
+	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
 
-  <title>{% block title %}Superdesk Web Publisher theme for The Triangle{% endblock %}</title>
-  <meta name="author" content="Sourcefabric">
+	<title>{% block title %}The Triangle - The Independent Student Newspaper at Drexel University{% endblock %}</title>
+	<meta name="author" content="The Triangle IT Team">
 
-  <meta name="description" content="Superdesk Publisher is state of the art publishing system.">
-  <meta name="keywords" content="Superdesk, Sourcefabric, open source, media, journalism">
+	<meta name="description" content="The Triangle - The Independent Student Newspaper at Drexel University since 1926.">
+	<meta name="keywords" content="The Triangle, Triangle, Drexel University, Drexel, news, opinion, sports, media, journalism">
 
-  <meta name="google-site-verification" content="uJB4D5iTxa0pKz2QP1XiHFwa3lFd2F0oTcHd-bHpU2U" />
+	<meta name="google-site-verification" content="uJB4D5iTxa0pKz2QP1XiHFwa3lFd2F0oTcHd-bHpU2U" />
 
  <!-- RSS & Pingback -->
-  <link rel="alternate" type="application/rss+xml" title="RSS 2.0" href="{{ url('rss') }}">
+	<link rel="alternate" type="application/rss+xml" title="RSS 2.0" href="{{ url('rss') }}">
 
-  <meta name="viewport" content="width=device-width, initial-scale=1">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
 
-  <link rel="shortcut icon" href="{{ asset('theme/img/icons/favicon.ico') }}" />
+	<link rel="shortcut icon" href="{{ asset('theme/img/icons/favicon.ico') }}" />
 
-  <link href="https://fonts.googleapis.com/css?family=Merriweather:300,400,700,900|Roboto+Slab|Playfair+Display|Crimson+Text|Material+Icons" rel="stylesheet">
+	<link href="https://fonts.googleapis.com/css?family=Merriweather:300,400,700,900|Roboto+Slab|Playfair+Display|Crimson+Text|Material+Icons" rel="stylesheet">
 
-  <link rel="stylesheet" href="{{ asset('theme/dist/style.css') }}" />
-    <style>
+	<link rel="stylesheet" href="{{ asset('theme/dist/style.css') }}" />
+		<style>
 
-      .accordion .accordion__sectionTitle.active, .editorialComment, .stripBox .stripBox__title.active, .gallery .gallery__strip, .button--color, .articleMetadata .articleMetadata__updated {
-        background-color: {{ themeSetting('primary_color') }};
-      }
+			.accordion .accordion__sectionTitle.active, .editorialComment, .stripBox .stripBox__title.active, .gallery .gallery__strip, .button--color, .articleMetadata .articleMetadata__updated {
+				background-color: {{ themeSetting('primary_color') }};
+			}
 
-      .okayNav li.current, a:hover h3 {
-        color: {{ themeSetting('primary_color') }};
-      }
+			.okayNav li.current, a:hover h3 {
+				color: {{ themeSetting('primary_color') }};
+			}
 
-      .articleMetadata__byline a, .article .article__keywords li a {
-        border-bottom-color: {{ themeSetting('primary_color') }};
-      }
+			.articleMetadata__byline a, .article .article__keywords li a {
+				border-bottom-color: {{ themeSetting('primary_color') }};
+			}
 
-      h1, h2, h3, input {
-        font-family: {{ themeSetting('primary_font_family') }};
-      }
+			h1, h2, h3, input {
+				font-family: {{ themeSetting('primary_font_family') }};
+			}
 
-      body {
-        font-size: {{ themeSetting('body_font_size') }};
-        font-family: {{ themeSetting('secondary_font_family') }};
-      }
+			body {
+				font-size: {{ themeSetting('body_font_size') }};
+				font-family: {{ themeSetting('secondary_font_family') }};
+			}
 
-    </style>
+		</style>
 
 </head>
 <body>
+	<div id="fb-root"></div>
+	<script>(function(d, s, id) {
+		var js, fjs = d.getElementsByTagName(s)[0];
+		if (d.getElementById(id)) return;
+		js = d.createElement(s); js.id = id;
+		js.src = "//connect.facebook.net/en_US/sdk.js#xfbml=1&version=v2.7";
+		fjs.parentNode.insertBefore(js, fjs);
+	}(document, 'script', 'facebook-jssdk'));</script>
 
-  <div id="fb-root"></div>
-  <script>(function(d, s, id) {
-    var js, fjs = d.getElementsByTagName(s)[0];
-    if (d.getElementById(id)) return;
-    js = d.createElement(s); js.id = id;
-    js.src = "//connect.facebook.net/en_US/sdk.js#xfbml=1&version=v2.7";
-    fjs.parentNode.insertBefore(js, fjs);
-  }(document, 'script', 'facebook-jssdk'));</script>
+	<script>(function() {
+		var cx = '001959388472599317396:-zwezp41wak';
+		var gcse = document.createElement('script');
+		gcse.type = 'text/javascript';
+		gcse.async = true;
+		gcse.src = 'https://cse.google.com/cse.js?cx=' + cx;
+		var s = document.getElementsByTagName('script')[0];
+		s.parentNode.insertBefore(gcse, s);
+	})();</script>
 
-  <script>(function() {
-    var cx = '001959388472599317396:-zwezp41wak';
-    var gcse = document.createElement('script');
-    gcse.type = 'text/javascript';
-    gcse.async = true;
-    gcse.src = 'https://cse.google.com/cse.js?cx=' + cx;
-    var s = document.getElementsByTagName('script')[0];
-    s.parentNode.insertBefore(gcse, s);
-  })();</script>
+	{#{% include 'partials/login-popup.html.twig' %}
 
-{#{% include 'partials/login-popup.html.twig' %}
+	{% include 'partials/register-popup.html.twig' %}
 
-{% include 'partials/register-popup.html.twig' %}
+	{% include 'partials/user-profile.html.twig' %}#}
 
-{% include 'partials/user-profile.html.twig' %}
+	{% include 'partials/mainMenu.html.twig' %}
 
-  <div class="topBar">
-    <div class="container">
-      <div class="row">
+	{# This is where body content is inserted #}
+	{% block body %}{% endblock %}
 
-        <div class="topBar__weather col-sm-3 col-md-3 col-xs-12">
-          <p><img src="" class="weather-icon" alt="Weather Icon" /><span class="weather-temperature"></span>, <span class="weather-place"></span></p>
-        </div>
-
-        <div class="topBar__links col-sm-6 col-md-6 col-xs-5 hidden-xs">
-          <ul class="pull-left">
-            {% gimmelist article from articles with {'route' : '/about' } %}
-            <li><a href="{{ url(article) }}">{{ article.title }}</a></li>
-            {% endgimmelist %}
-          </ul>
-          <ul class="pull-right">          
-          {% if app.user %}
-            <li><a href="#" class="open_user_profile" data-toggle="modal" data-target="#userProfile">Hello {{ app.user.username }}</a></li>
-            <li>|</li>
-            <li><a href="{{ url('security_logout') }}">Logout</a></li>
-          {% else %}
-            <li><a href="#" class="open_user_profile" data-toggle="modal" data-target="#loginPopup">Sign in</a></li>
-            <li>|</li>
-            <li><a href="#" class="open_user_profile" data-toggle="modal" data-target="#registerPopup">Sign up</a></li>
-          {% endif %}
-          </ul> 
-        </div>
-
-        <div class="topBar__social col-sm-3 col-md-3 col-xs-6 hidden-xs">
-          <ul>
-            <li><a href="https://www.facebook.com/Superdesk/"><img src="{{ asset('theme/img/social-fb.svg') }}"></a></li>
-            <li><a href="https://twitter.com/Sourcefabric"><img src="{{ asset('theme/img/social-tw.svg') }}"></a></li>
-            <li><a href="https://www.youtube.com/user/Sourcefabric"><img src="{{ asset('theme/img/social-yt.svg') }}"></a></li>
-            <li><a href="{{ url('rss') }}"><img src="{{ asset('theme/img/social-rss.svg') }}"></a></li>
-          </ul>
-        </div>
-
-      </div>
-    </div>
-  </div>#}
-
-  {#<header class="header">
-
-    <div class="container">
-
-      <div class="row">
-
-        <div class="verticalMiddle col-md-5 col-sm-5 col-xs-12">
-          <a class="header__logo" href="{{ url('home') }}"><img src="{{ themeLogo(asset('/public/img/logo.svg')) }}"></a>
-        </div>
-
-        <div class="header__search verticalMiddle col-sm-7 col-md-7 col-xs-12">
-        
-          <!--form id="search" name="search_articles" method="GET" action="/search">
-            <input type="text" name="q" placeholder="search" value="">
-            <button type="submit">Submit</button>           
-          </form-->
-        
-        <gcse:searchbox-only></gcse:searchbox-only>
-        </div>
-
-      </div>
-
-    </div>
-
-  </header>#}
-
-  {% gimmelist author from authors|limit(3) with { role: ["featured"] } %}
-  {% if loop.first %}
-  <div class="trendingTopics">
-    <div class="container">
-      <div class="okayNav-header">
-        <nav role="navigation" id="topics" class="okayNav">
-          <ul class="trendingTopics__items">
-            <li>Featured authors</li>
-  {% endif %}
-            <li><a href="{{ url('Authors', { 'authorSlug' : author.slug }) }}">{{ author.name }}</a></li>
-  {% if loop.last %}    
-          </ul>
-        </nav>
-      </div>
-    </div>
-  </div>
-  {% endif %}
-  {% endgimmelist %} 
-
-{% include 'partials/mainMenu.html.twig' %}
-
-{# This is where body content is inserted #}
-{% block body %}{% endblock %}
-
-<!-- Footer -->
-<footer id="colophon" class="footer-wrapper">
-	<div class="footer-container">
-		<div class="footer-branding">
-			<div class="footer-logo">
-				<a href="{{ url('home') }}"><img src="{{ asset('theme/img/logo-black.svg') }}"></a>
+	<!-- Footer -->
+	<footer id="colophon" class="footer-wrapper">
+		<div class="footer-container">
+			<div class="footer-branding">
+				<div class="footer-logo">
+					<a href="{{ url('home') }}"><img src="{{ asset('theme/img/logo-black.svg') }}"></a>
+				</div>
+				
+				<div class="footer-social">
+					<a href="https://www.facebook.com/drexel.triangle/" target="_blank"><img src="{{ asset('theme/img/social-fb.svg') }}"></a>
+					<a href="https://twitter.com/drexeltriangle" target="_blank"><img src="{{ asset('theme/img/social-tw.svg') }}"></a>
+					<a href="https://www.instagram.com/drexeltriangle/" target="_blank"><img src="{{ asset('theme/img/social-in.svg') }}"></a>
+					<a href="https://www.youtube.com/user/DrexelTriangle" target="_blank"><img src="{{ asset('theme/img/social-yt.svg') }}"></a>
+					<a href="http://thetriangle.us2.list-manage.com/subscribe/post?u=6eb4aab81745d3436b16a6181&id=7389750c95" target="_blank"><img src="{{ asset('theme/img/email.svg') }}"></a>
+				</div>
+				
+				<div class="footer-tagline">
+					THE INDEPENDENT STUDENT NEWSPAPER AT DREXEL UNIVERSITY SINCE 1926
+				</div>
 			</div>
 			
-		  <div class="footer-social">
-        <a href="https://www.facebook.com/drexel.triangle/" target="_blank"><img src="{{ asset('theme/img/social-fb.svg') }}"></a>
-        <a href="https://twitter.com/drexeltriangle" target="_blank"><img src="{{ asset('theme/img/social-tw.svg') }}"></a>
-        <a href="https://www.instagram.com/drexeltriangle/" target="_blank"><img src="{{ asset('theme/img/social-in.svg') }}"></a>
-        <a href="https://www.youtube.com/user/DrexelTriangle" target="_blank"><img src="{{ asset('theme/img/social-yt.svg') }}"></a>
-        <a href="http://thetriangle.us2.list-manage.com/subscribe/post?u=6eb4aab81745d3436b16a6181&id=7389750c95" target="_blank"><img src="{{ asset('theme/img/email.svg') }}"></a>
+			<nav class="footer-nav-container">
+				<ul class="footer-nav-links">
+					<li><a href="/">Home</a></li>
+					<li><a href="/news">News</a></li>
+					<li><a href="/opinion">Opinion</a></li>
+					<li><a href="/entertainment">Entertainment</a></li>
+					<li><a href="/sports">Sports</a></li>
+					<li><a href="/donate">Donate</a></li>
+					<li><a href="/about">About</a></li>
+					<li><a href="/staff">Staff</a></li>
+					<li><a href="/advertising">Advertising</a></li>
+					<li><a href="/classifieds">Classifieds</a></li>
+					<li><a href="/join">Join</a></li>
+					<li><a href="/contact">Contact</a></li>
+				</ul>
+			</nav>
+
+			</div>     
+			<div class="footer-copyright">
+				©{{ "now"|date("Y") }} The Triangle. All rights are reserved, except where otherwise noted.
 			</div>
-			
-			<div class="footer-tagline">
-				THE INDEPENDENT STUDENT NEWSPAPER AT DREXEL UNIVERSITY SINCE 1926
+			<div class="footer-disclaimer">
+				The Triangle is an independent student organization and is not owned nor operated by Drexel University.
 			</div>
-		</div>
-    
-    <nav class="footer-nav-container">
-      <ul class="footer-nav-links">
-        <!--TODO add links for new website-->
-        {% set menu_names = ["Home", "News", "Opinion", "A&E", "Sports", "Donate", "About", "Staff", "Advertising", "Classifieds", "Join", "Contact"] %}
-        {% for name in menu_names %}
-          <li><a href="#">{{ name }}</a></li>
-        {% endfor %}
-      </ul>
-    </nav>
+	</footer>
 
-    </div>     
-    <div class="footer-copyright">
-      ©{{ "now"|date("Y") }} The Triangle. All rights are reserved, except where otherwise noted.
-    </div>
-    <div class="footer-disclaimer">
-      The Triangle is an independent student organization and is not owned nor operated by Drexel University.
-    </div>
-</footer>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
 
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+	<script src="{{ asset('theme/dist/all.js') }}"></script>
 
-<script src="{{ asset('theme/dist/all.js') }}"></script>
+	<script id="dsq-count-scr" src="//superdeskdailynews.disqus.com/count.js" async></script>
 
-<script id="dsq-count-scr" src="//superdeskdailynews.disqus.com/count.js" async></script>
+	{#<script type="text/javascript">
+	// Weather script: https://github.com/michael-lynch/open-weather
 
-{#<script type="text/javascript">
-// Weather script: https://github.com/michael-lynch/open-weather
-
-    $(function() {
-      $('.weather-temperature').openWeather({
-        key: 'ffccf64d91c2144d8018e8c5fc4a2e0d',
-        city: 'Belgrade',
-        units: 'c',
-        descriptionTarget: '.weather-description',
-        minTemperatureTarget: '.weather-min-temperature',
-        maxTemperatureTarget: '.weather-max-temperature',
-        placeTarget: '.weather-place',
-        iconTarget: '.weather-icon',
-        customIcons: '/public/img/icons/weather/',
-        success: function() {
-          $('.topBar__weather').show();
-        },
-        error: function() {
-          console.log("These aren't the droids you're looking for.");
-        }
-      });
-      
-    });
-</script>#}
-
+			$(function() {
+				$('.weather-temperature').openWeather({
+					key: 'ffccf64d91c2144d8018e8c5fc4a2e0d',
+					city: 'Belgrade',
+					units: 'c',
+					descriptionTarget: '.weather-description',
+					minTemperatureTarget: '.weather-min-temperature',
+					maxTemperatureTarget: '.weather-max-temperature',
+					placeTarget: '.weather-place',
+					iconTarget: '.weather-icon',
+					customIcons: '/public/img/icons/weather/',
+					success: function() {
+						$('.topBar__weather').show();
+					},
+					error: function() {
+						console.log("These aren't the droids you're looking for.");
+					}
+				});
+				
+			});
+	</script>#}
 </body>
 </html>

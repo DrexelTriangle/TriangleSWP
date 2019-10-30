@@ -95,6 +95,18 @@
                 "templateName": "index.html.twig"
             },
             {
+                "name": "Author",
+                "slug": "author",
+                "type": "custom",
+                "templateName": "author.html.twig"
+            },
+            {
+                "name": "Search",
+                "slug": "search",
+                "type": "content",
+                "templateName": "search.html.twig"
+            },
+            {
                 "name": "Trending",
                 "slug": "trending",
                 "type": "content",
