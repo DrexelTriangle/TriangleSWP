@@ -1,0 +1,1 @@
+Routes are configured with theme.json and are committed to the database when installing the theme to the swp_route table. If modifying routes after the theme has been installed, you must manually add an entry to the table. If you find a better way to do this, document it here.
