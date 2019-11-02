@@ -2,6 +2,27 @@
 
 {% block body %}
 
+<div class="frontpage-navbar-container">
+	<div id="search-icon-frontpage" class="header-search-icon black">
+		<i class="material-icons md-36">search</i>
+	</div>
+	
+	<div class="search-container">
+		<form class="search-form" id="search" name="search_articles" method="GET" action="/search" role="search">
+			<input class="search-textbox" id="searchbox-main" type="text" name="q" placeholder="Search..." value="" name="s">
+		</form>
+	</div>
+	
+	<div class="frontpage-navbar-links">
+		<a href="/about" rel="About">About Us</a> |
+		<a href="/advertising" rel="Advertising">Advertising</a> |
+		<a href="/classifieds" rel="Classifieds">Classifieds</a> |
+		<a href="/contact" rel="Contact">Contact</a>
+	</div>
+	
+	<div id="nav-icon-frontpage" class="header-hamburger-icon black"><span></span><span></span><span></span></div>
+</div>
+
 <div class="generic-wrapper">
 	<!-- TODO: insert global banner top -->
 
@@ -22,7 +43,7 @@
 	</header>
 
 	<div class="generic-container">
-		{% include 'partials/frontpage-section-news.html.twig'  %}		
+		{% include 'partials/frontpage-section-news.html.twig' with {'hideOnLoad' : true}  %}
 	</div>
 
 	<div class="generic-flex-container">

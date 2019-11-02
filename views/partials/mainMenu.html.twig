@@ -1,7 +1,7 @@
 {# TODO: insert breaking news if there is any #}
 
-{#<header id="header-global" class="<?php is_front_page() ? print('header-global hidden') : print('header-global') ?>" role="banner">#}
-<header id="header-global" class="header-global" role="banner">
+{# Hide global header on load if specified when loading partial - only done on front page #}
+<header id="header-global" class="{{ hideOnLoad ? 'header-global hidden' : 'header-global' }}" role="banner">
 	<div id="header-search-icon" class="header-search-icon white">
 		<i class="material-icons md-36">search</i>
 	</div>
@@ -9,7 +9,6 @@
 	<div class="search-container">
 		<form class="search-form" id="search" name="search_articles" method="GET" action="/search" role="search">
 			<input class="search-textbox" id="searchbox-main" type="text" name="q" placeholder="Search..." value="" name="s">
-			<!--<button type="submit">Submit</button>-->
 		</form>
 	</div>
 	

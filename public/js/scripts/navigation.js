@@ -11,6 +11,8 @@ $(document).ready(function()
 
 $(window).scroll(function()
 {
+	// :in-viewport requires jquery.viewport.js plugin in public/js/vendor
+	// TODO: remove dependency and rewrite in native JS
 	if (!$('#header-frontpage').is(":in-viewport"))
 		$('#header-global').removeClass('hidden');
 	
