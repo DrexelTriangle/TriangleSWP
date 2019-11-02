@@ -9,60 +9,66 @@
 {% set itemsPerPage, currentPage = 8, app.request.get('page', 1) %}
 {% set start = ((currentPage - 1) * itemsPerPage) %}
 
-<div xlass="generic-container">
-	<form id="search" name="search_articles" method="GET" action="/search">
-		<input type="text" name="q" placeholder="search" value="">
-		<button type="submit">Submit</button>           
-	</form>
+<div class="generic-wrapper">
+	<div class="category-title">
+		<h1 class="text-title-large">Search results</h1>
+	</div>
+
+	<div class="generic-container">
+		<form id="search" name="search_articles" method="GET" action="/search">
+			<input type="text" name="q" placeholder="search" value="">
+			<button type="submit">Submit</button>           
+		</form>
+	</div>
+
+	{% gimmelist article from searchResults|limit(app.request.get('limit', 10))|order(app.request.get('field', 'publishedAt'), app.request.get('direction', 'desc')) with {
+			term: app.request.get('q', ''),
+			page: app.request.get('page', 1),
+			routes: app.request.get('route', []),
+			term: app.request.get('q', ''),
+			publishedBefore: app.request.get('publishedBefore'),
+			publishedAfter: app.request.get('publishedAfter'),
+			publishedAt: app.request.get('publishedAt'),
+			sources: app.request.get('source', []),
+			authors: app.request.get('author', []),
+			statuses: app.request.get('status', []),
+			metadata: app.request.get('metadata', []),
+		} %}
+
+		{# If it's the first iteration of the loop, set up the article list container #}
+		{% if loop.first %}
+			<div class="generic-flex-container">
+				<main id="section-articles" class="flex-main">
+		{% endif %}
+
+		{# Render remaining articles for the page #}
+		{% include 'partials/article-listing.html.twig' %}
+
+		{# Place an inline ad after every 5 articles #}
+		{% if loop.index is divisible by(5) %}
+				</main>
+			</div>
+
+			{% include 'flytedesk/flytedesk-inline.html.twig' %}
+
+			<div class="generic-flex-container">
+				<main id="section-articles" class="flex-main">
+		{% endif %}
+
+		{% if loop.last  %}
+				</main>
+			</div>
+
+			{% include 'partials/pagination.html.twig' with {
+				currentFilters: {}|merge(app.request.query.all()),
+				currentPage: currentPage,
+				paginationPath: gimme.route,
+				lastPage: (loop.totalLength/itemsPerPage)|round(0, 'ceil')
+			} only %}
+
+			Showing {{ searchResults|length }} out of {{ loop.totalLength }} articles.
+		{% endif %}
+	{% endgimmelist %}
 </div>
-
-{% gimmelist article from searchResults|limit(app.request.get('limit', 10))|order(app.request.get('field', 'publishedAt'), app.request.get('direction', 'desc')) with {
-		term: app.request.get('q', ''),
-		page: app.request.get('page', 1),
-		routes: app.request.get('route', []),
-		term: app.request.get('q', ''),
-		publishedBefore: app.request.get('publishedBefore'),
-		publishedAfter: app.request.get('publishedAfter'),
-		publishedAt: app.request.get('publishedAt'),
-		sources: app.request.get('source', []),
-		authors: app.request.get('author', []),
-		statuses: app.request.get('status', []),
-		metadata: app.request.get('metadata', []),
-	} %}
-
-	{# If it's the first iteration of the loop, set up the article list container #}
-	{% if loop.first %}
-		<div class="generic-flex-container">
-			<main id="section-articles" class="flex-main">
-	{% endif %}
-
-	{# Render remaining articles for the page #}
-	{% include 'partials/article-listing.html.twig' %}
-
-	{# Place an inline ad after every 5 articles #}
-	{% if loop.index is divisible by(5) %}
-			</main>
-		</div>
-
-		{% include 'flytedesk/flytedesk-inline.html.twig' %}
-
-		<div class="generic-flex-container">
-			<main id="section-articles" class="flex-main">
-	{% endif %}
-
-	{% if loop.last  %}
-			</main>
-		</div>
-
-		{% include 'partials/pagination.html.twig' with {
-			currentFilters: {}|merge(app.request.query.all()),
-			currentPage: currentPage,
-			paginationPath: gimme.route,
-			lastPage: (loop.totalLength/itemsPerPage)|round(0, 'ceil')
-		} only %}
-
-		Showing {{ searchResults|length }} out of {{ loop.totalLength }} articles.
-	{% endif %}
-{% endgimmelist %}
 
 {% endblock %}
