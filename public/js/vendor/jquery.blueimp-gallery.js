@@ -80,4 +80,4 @@
     }
     return new Gallery(links, options)
   })
-}))
+}));
