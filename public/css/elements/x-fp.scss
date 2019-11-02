@@ -6,6 +6,7 @@
 	.left
 	{
 		@include flex(0 0 20%);
+		order: 1;
 		padding-right: 15px;
 	}
 	
@@ -14,6 +15,7 @@
 		border-left: 1px solid lightgrey;
 		border-right: 1px solid lightgrey;
 		@include flex(0 0 45%);
+		order: 2;
 		padding-left: 15px;
 		padding-right: 15px;
 		
@@ -28,6 +30,7 @@
 	.right
 	{
 		@include flex(1 0);
+		order: 3;
 		padding-left: 15px;
 	}
 	

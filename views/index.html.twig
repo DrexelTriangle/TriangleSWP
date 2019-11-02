@@ -44,7 +44,9 @@
 
 	<div class="generic-container">
 		{# List top stories. Currently used for news section's latest articles only #}
-		{% include 'partials/frontpage-topStories.html.twig' %}
+		{% gimmelist article from articles|start(0)|limit(6)|order('publishedAt','desc') with {'route': '/news'}  %}
+			{% include 'partials/frontpage-topStories.html.twig' %}
+		{% endgimmelist %}
 	</div>
 
 	<div class="generic-flex-container">
