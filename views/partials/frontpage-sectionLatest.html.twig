@@ -1,0 +1,45 @@
+{% if loop.first %}
+	<ul class="stories-sixpack">
+{% endif %}
+
+<li class="story-item">
+	{# TODO: if post has thumbnail #}
+	{% if true %}
+		{% set imgCaption = "Default image" %}
+		{% set rend610 = "{{ asset('theme/img/article_img/610x380.png') }}" %}
+		{% include 'partials/image-231x154.html.twig' with {'imgCaption' : imgCaption, 'rend610' : rend610, 'where' : 'grid' } %}
+
+		{% if article.authors %}
+			{% for author in article.authors %} 
+				<div class="frontpage-postinfo">By {{ author.name }} | {{ article.updatedAt|date("M. j, Y") }}</div>
+			{% endfor %}
+			{% elseif article.metadata.byline %}
+				<div class="frontpage-postinfo">By {{ author.metadata.byline }} | {{ article.updatedAt|date("M. j, Y") }}</div>
+		{% endif %}
+
+		<a class="text-headline-small" href="{{ url(article) }}">{{ article.title }}</a>
+
+	{# If post does not have thumbnail #}
+	{% else %}
+		<a class="text-headline-medium" href="{{ url(article) }}">{{ article.title }}</a>
+		
+		{% if article.authors %}
+			{% for author in article.authors %} 
+				<div class="frontpage-postinfo">By {{ author.name }} | {{ article.updatedAt|date("M. j, Y") }}</div>
+			{% endfor %}
+			{% elseif article.metadata.byline %}
+				<div class="frontpage-postinfo">By {{ author.metadata.byline }} | {{ article.updatedAt|date("M. j, Y") }}</div>
+		{% endif %}
+
+		{% if article.lead == "" %}
+      		<p>{{ article.body|striptags|safeTruncate(160,"...") }}</p>
+    	{% else %}
+      		<p>{{ article.lead|striptags|safeTruncate(160,"...") }}</p>
+    	{% endif %}
+
+	{% endif %}
+</li>
+
+{% if loop.last  %}
+	</ul>
+{% endif %}
