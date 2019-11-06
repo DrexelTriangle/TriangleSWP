@@ -3,6 +3,8 @@
 {# TODO: handle article images. Can be done with partial with params
 printf('<a href="%1$s"><div class="highlights-thumbnail-desktop">%2$s</div></a>', $link, get_the_post_thumbnail());
 printf('<a href="%1$s"><div class="highlights-thumbnail-mobile">%2$s</div></a>', $link, get_the_post_thumbnail(null, array('class' => '169-preview-medium')));#}
+{% include 'partials/image-single.html.twig' with { 'class' : 'highlights-thumbnail-desktop', 'outputType' : 'hyperlink', 'rendName' : '600x300' } %}
+
 <a class="text-headline-medium" href="{{ url(article) }}">{{ article.title }}</a>
 
 {% if article.lead == "" %}
