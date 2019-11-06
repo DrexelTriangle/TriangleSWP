@@ -1,5 +1,7 @@
 {% extends 'base.html.twig' %}
 
+{% block title %}Search results for '{{ app.request.get('q', '') }}' - The Triangle{% endblock %}
+
 {% block body %}
 
 <form name="filter" method="get">
@@ -11,7 +13,7 @@
 
 <div class="generic-wrapper">
 	<div class="category-title">
-		<h1 class="text-title-large">Search results</h1>
+		<h1 class="text-title-large">Search results for '{{ app.request.get('q', '') }}'</h1>
 	</div>
 
 	<div class="generic-container">

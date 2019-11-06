@@ -7,6 +7,8 @@
 		{% gimme author with { slug: app.request.attributes.get('authorSlug') } %}
 		{% set currentAuthor = author %}
 
+		{% block title %}{{ currentAuthor.name }}, Author at The Triangle{% endblock %}
+
 		<figure class="authorMetadata__image"><img src="{{ url(author.avatar) }}"></figure>
 		<h1 class="text-title-large">{{ author.name }}</h1>
 		<p>{{ author.biography }}</p>
