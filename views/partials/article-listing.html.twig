@@ -22,9 +22,5 @@
 	</div>
 
 	{# Right box - thumbnail #}
-	{#<a href="%1$s"><div class="category-thumbnail">%2$s</div></a>', $link, get_the_post_thumbnail(null, array('class' => '169-preview-medium')));#}
-	{% set imgCaption = "Default image" %}
-	{% set rend610 = "{{ asset('theme/img/article_img/610x380.png') }}" %}
-
-	{% include 'partials/image610x380.html.twig' with {'imgCaption' : imgCaption, 'rend610' : rend610, 'where' : 'grid' } %}
+	{% include 'partials/image-single.html.twig' with { 'class' : 'category-thumbnail', 'outputType' : 'hyperlink', 'rendName' : 'thumbnail' } %}
 </div>

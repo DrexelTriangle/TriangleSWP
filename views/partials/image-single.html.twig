@@ -42,10 +42,16 @@
 		</figure>
 
 	{% elseif outputType == 'hyperlink' %}
-		<a class="{{ class }}" href="{{ url(article) }}"><img src="{{ rend }}" alt="{{ imgCaption }}" /></a>
+		<a href="{{ url(article) }}">
+			<div class="{{ class }}">
+				<img src="{{ rend }}" alt="{{ imgCaption }}" />
+			</div>
+		</a>
 
 	{% else %}
-		<img class="{{ class }}" src="{{ rend }}" alt="{{ imgCaption }}" />
+		<div class="{{ class }}">
+			<img src="{{ rend }}" alt="{{ imgCaption }}" />
+		</div>
 
 	{% endif %}
 {% endif %}
