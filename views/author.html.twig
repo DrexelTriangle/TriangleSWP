@@ -3,6 +3,9 @@
 {% block body %}
 
 <div id="primary" class="generic-wrapper">
+	{# Flytedesk leaderboard ad #}
+	{% include 'flytedesk/flytedesk-bannerTop.html.twig' %}
+
 	<div class="generic-container">
 		{% gimme author with { slug: app.request.attributes.get('authorSlug') } %}
 		{% set currentAuthor = author %}
@@ -36,9 +39,12 @@
 		</main>
 
 		<aside class="flex-sidebar">	
-			<!-- TODO: put aside content -->
+			{% include 'partials/sidebar.html.twig' %}
 		</aside>
 	</div>
+
+	{# Flytedesk foot banner ad #}
+	{% include 'flytedesk/flytedesk-bannerBottom.html.twig' %}
 </div>
 
 

@@ -4,14 +4,13 @@
 
 {% block body %}
 
-<form name="filter" method="get">
-	<input type="search" id="filter_search" name="q">
-</form>
-
 {% set itemsPerPage, currentPage = 8, app.request.get('page', 1) %}
 {% set start = ((currentPage - 1) * itemsPerPage) %}
 
 <div class="generic-wrapper">
+	{# Flytedesk leaderboard ad #}
+	{% include 'flytedesk/flytedesk-bannerTop.html.twig' %}
+
 	<div class="category-title">
 		<h1 class="text-title-large">Search results for '{{ app.request.get('q', '') }}'</h1>
 	</div>
@@ -23,54 +22,45 @@
 		</form>
 	</div>
 
-	{% gimmelist article from searchResults|limit(app.request.get('limit', 10))|order(app.request.get('field', 'publishedAt'), app.request.get('direction', 'desc')) with {
-			term: app.request.get('q', ''),
-			page: app.request.get('page', 1),
-			routes: app.request.get('route', []),
-			term: app.request.get('q', ''),
-			publishedBefore: app.request.get('publishedBefore'),
-			publishedAfter: app.request.get('publishedAfter'),
-			publishedAt: app.request.get('publishedAt'),
-			sources: app.request.get('source', []),
-			authors: app.request.get('author', []),
-			statuses: app.request.get('status', []),
-			metadata: app.request.get('metadata', []),
-		} %}
+	<div class="generic-flex-container">
+		<main id="section-articles" class="flex-main">
+			{% gimmelist article from searchResults|limit(app.request.get('limit', 10))|order(app.request.get('field', 'publishedAt'), app.request.get('direction', 'desc')) with {
+					term: app.request.get('q', ''),
+					page: app.request.get('page', 1),
+					routes: app.request.get('route', []),
+					term: app.request.get('q', ''),
+					publishedBefore: app.request.get('publishedBefore'),
+					publishedAfter: app.request.get('publishedAfter'),
+					publishedAt: app.request.get('publishedAt'),
+					sources: app.request.get('source', []),
+					authors: app.request.get('author', []),
+					statuses: app.request.get('status', []),
+					metadata: app.request.get('metadata', []),
+				} %}
 
-		{# If it's the first iteration of the loop, set up the article list container #}
-		{% if loop.first %}
-			<div class="generic-flex-container">
-				<main id="section-articles" class="flex-main">
-		{% endif %}
+				{# Render articles returned as search results #}
+				{% include 'partials/article-listing.html.twig' %}
 
-		{# Render remaining articles for the page #}
-		{% include 'partials/article-listing.html.twig' %}
+				{% if loop.last  %}
+					{% include 'partials/pagination.html.twig' with {
+						currentFilters: {}|merge(app.request.query.all()),
+						currentPage: currentPage,
+						paginationPath: gimme.route,
+						lastPage: (loop.totalLength/itemsPerPage)|round(0, 'ceil')
+					} only %}
 
-		{# Place an inline ad after every 5 articles #}
-		{% if loop.index is divisible by(5) %}
-				</main>
-			</div>
+					Showing {{ searchResults|length }} out of {{ loop.totalLength }} articles.
+				{% endif %}
+			{% endgimmelist %}
+		</main>
 
-			{% include 'flytedesk/flytedesk-inline.html.twig' %}
+		<aside class="flex-sidebar">
+			{% include 'partials/sidebar.html.twig' %}
+		</aside>
+	</div>
 
-			<div class="generic-flex-container">
-				<main id="section-articles" class="flex-main">
-		{% endif %}
-
-		{% if loop.last  %}
-				</main>
-			</div>
-
-			{% include 'partials/pagination.html.twig' with {
-				currentFilters: {}|merge(app.request.query.all()),
-				currentPage: currentPage,
-				paginationPath: gimme.route,
-				lastPage: (loop.totalLength/itemsPerPage)|round(0, 'ceil')
-			} only %}
-
-			Showing {{ searchResults|length }} out of {{ loop.totalLength }} articles.
-		{% endif %}
-	{% endgimmelist %}
+	{# Flytedesk foot banner ad #}
+	{% include 'flytedesk/flytedesk-bannerBottom.html.twig' %}
 </div>
 
 {% endblock %}

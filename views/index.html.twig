@@ -26,7 +26,8 @@
 </div>
 
 <div class="generic-wrapper">
-	<!-- TODO: insert global banner top -->
+	{# Flytedesk leaderboard ad #}
+	{% include 'flytedesk/flytedesk-bannerTop.html.twig' %}
 
 	<header id="header-frontpage" class="frontpage-header">
 		<div class="frontpage-logo">
@@ -86,29 +87,12 @@
 				
 		
 		<aside class="flex-sidebar">
-			<div id="tx_social_widget-2" class="sidebar-item widget_tx_social_widget">
-				<div class="sidebar-title">Follow Us</div>
-				<ul class="social-links">
-					<li class="social-item">
-						<i class="fa fa-facebook" style="color: #3b5998;"></i>
-						<a href="https://www.facebook.com/drexel.triangle/" target="_blank">Drexel Triangle</a>
-					</li>
-					<li class="social-item">
-						<i class="fa fa-twitter" style="color: #00acee;"></i>
-						<a href="https://twitter.com/drexeltriangle" target="_blank">@DrexelTriangle</a>
-					</li>
-					<li class="social-item">
-						<i class="fa fa-instagram text-instagram"></i>
-						<a href="https://www.instagram.com/drexeltriangle/" target="_blank">@drexeltriangle</a>
-					</li>
-					<li class="social-item">
-						<i class="fa fa-youtube-play" style="color: #e52d27;"></i>
-						<a href="https://www.youtube.com/user/DrexelTriangle" target="_blank">DrexelTriangle</a>
-					</li>
-				</ul>
-			</div>
+			{% include 'partials/sidebar.html.twig' %}
 		</aside>
 	</div>
+
+	{# Flytedesk foot banner ad #}
+	{% include 'flytedesk/flytedesk-bannerBottom.html.twig' %}
 </div>
 
 {% endblock %}

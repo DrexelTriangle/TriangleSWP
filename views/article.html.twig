@@ -5,168 +5,170 @@
 {% block body %}
 
 <div id="blueimp-gallery" class="blueimp-gallery blueimp-gallery-controls">
-  <div class="slides"></div>
-  <h3 class="title"></h3>
-  <a class="prev">‹</a>
-  <a class="next">›</a>
-  <a class="close">×</a>
-  <a class="play-pause"></a>
-  <ol class="indicator"></ol>
+	<div class="slides"></div>
+	<h3 class="title"></h3>
+	<a class="prev">‹</a>
+	<a class="next">›</a>
+	<a class="close">×</a>
+	<a class="play-pause"></a>
+	<ol class="indicator"></ol>
 </div>
 
 <div class="generic-wrapper">
-	<!-- TODO: put global banner top here  -->
+	{# Flytedesk leaderboard ad #}
+	{% include 'flytedesk/flytedesk-bannerTop.html.twig' %}
 
 	<div class="generic-container" style="margin-bottom: 0px;">
 		<!-- TODO: put logo for print  -->
 
-    {# Cache article content and meta data #}
-    {% cache 'article' {gen: gimme.article} %}
+		{# Cache article content and meta data #}
+		{% cache 'article' {gen: gimme.article} %}
 		
 		<div class="single-title">
-      <h1>{{ gimme.article.title }}</h1>
-      <p>{{ gimme.article.lead|raw }}</p>
-    </div>
+			<h1>{{ gimme.article.title }}</h1>
+			<p>{{ gimme.article.lead|raw }}</p>
+		</div>
 
 		<div class="single-meta">
 			<div class="author">
-        {# Print author information to page #}
-        {% if gimme.article.authors  %}
-          {% for author in gimme.article.authors %}
-            {# TODO: handle formatting if multiple authors #}
-            By <a href="{{ url('Authors', { 'authorSlug' : author.slug }) }}">{{ author.name }}</a>
-          {% endfor %}
-        {% elseif gimme.article.metadata.byline %}
-          By {{ gimme.article.metadata.byline }}
-        {% endif %}
+				{# Print author information to page #}
+				{% if gimme.article.authors  %}
+					{% for author in gimme.article.authors %}
+						{# TODO: handle formatting if multiple authors #}
+						By <a href="{{ url('Authors', { 'authorSlug' : author.slug }) }}">{{ author.name }}</a>
+					{% endfor %}
+				{% elseif gimme.article.metadata.byline %}
+					By {{ gimme.article.metadata.byline }}
+				{% endif %}
 
-        {# Print date of article #}
-        <time class="date" datetime="{{ gimme.article.publishedAt|date("c") }}">{{ gimme.article.publishedAt|date("M. j, Y") }}</time>
+				{# Print date of article #}
+				<time class="date" datetime="{{ gimme.article.publishedAt|date("c") }}">{{ gimme.article.publishedAt|date("M. j, Y") }}</time>
 
-        {# Print when article was updated, if it was updated #}
-        {% if gimme.article.publishedAt|date("M. j, Y") != gimme.article.updatedAt|date("M. j, Y") %}
-          <span> - updated <span>{{ gimme.article.updatedAt|date("M. j, Y") }}</span></span>
-        {% endif %}
+				{# Print when article was updated, if it was updated #}
+				{% if gimme.article.publishedAt|date("M. j, Y") != gimme.article.updatedAt|date("M. j, Y") %}
+					<span> - updated <span>{{ gimme.article.updatedAt|date("M. j, Y") }}</span></span>
+				{% endif %}
 
-        {# TODO: Print share buttons #}
+				{# TODO: Print share buttons #}
 			</div>
 		</div>
 
-    <div class="single-return">
-      <a href="/">🠘 Return to home</a>
-    </div>
+		<div class="single-return">
+			<a href="/">🠘 Return to home</a>
+		</div>
 	</div>
 
-  <div class="generic-flex-container">
-    <main id="content" class="flex-main">
-      <article class="single-content">
-        {# Include image media to feature above the article #}
-        {% include 'partials/image-single.html.twig' with { 'outputType' : 'figure', 'rendName' : '1250x600' } %}
-        
-        {# Print article content #}
-        <p>{{ gimme.article.body|raw }}</p>
+	<div class="generic-flex-container">
+		<main id="content" class="flex-main">
+			<article class="single-content">
+				{# Include image media to feature above the article #}
+				{% include 'partials/image-single.html.twig' with { 'outputType' : 'figure', 'rendName' : '1250x600' } %}
+				
+				{# Print article content #}
+				<p>{{ gimme.article.body|raw }}</p>
 
-        {# TODO: decide if and how the article image gallery will be used #}
-        {#% include 'partials/slideshow.html.twig' %#}
-      </article>
+				{# TODO: decide if and how the article image gallery will be used #}
+				{#% include 'partials/slideshow.html.twig' %#}
+			</article>
 
-      <div id="comments" class="single-comments">
-        {# Load comments template into page - will load in iframe #}
-        <div id="disqus_thread"></div>
-      </div>
+			<div id="comments" class="single-comments">
+				{# Load comments template into page - will load in iframe #}
+				<div id="disqus_thread"></div>
+			</div>
 
-      {# TODO: print keywords/tags to page #}
-      {#% for keyword in gimme.article.keywords %}
-      {% if loop.first %}
-      <ul class="article__keywords">
-        <li>Keywords: </li>
-        {% endif %}  
-            <li><a href="{{ url('trending') }}?kw={{ keyword }}">{{ keyword }}</a></li>
-        {% if loop.last %}  
-      </ul>
-      {% endif %}
-      {% endfor %#}
-    </main>
+			{# TODO: print keywords/tags to page #}
+			{#% for keyword in gimme.article.keywords %}
+			{% if loop.first %}
+			<ul class="article__keywords">
+				<li>Keywords: </li>
+				{% endif %}  
+						<li><a href="{{ url('trending') }}?kw={{ keyword }}">{{ keyword }}</a></li>
+				{% if loop.last %}  
+			</ul>
+			{% endif %}
+			{% endfor %#}
+		</main>
 
-    <aside class="flex-sidebar">
-      <!-- TODO: put sidebar content here? -->
-    </aside>
-  </div>
+		<aside class="flex-sidebar">
+			{% include 'partials/sidebar.html.twig' %}
+		</aside>
+	</div>
 
-	<!-- TODO: put global banner bottom here -->
+	{# Flytedesk foot banner ad #}
+	{% include 'flytedesk/flytedesk-bannerBottom.html.twig' %}
 </div>
 
-      <!-- related articles section -->
-      {#<div class="row">
-        <div class="col-md-12 col-sm-12 col-xs-12">
+			<!-- related articles section -->
+			{#<div class="row">
+				<div class="col-md-12 col-sm-12 col-xs-12">
 
-          <h3 class="sectionHeadingBold marginTop30"><a href="{{path(gimme.article.route)}}">More from {{ gimme.article.route.name|capitalize }}</a></h3>
-          <div class="row">
+					<h3 class="sectionHeadingBold marginTop30"><a href="{{path(gimme.article.route)}}">More from {{ gimme.article.route.name|capitalize }}</a></h3>
+					<div class="row">
 
-            {% set currArt = gimme.article.id %}
-            <div class="articleGrid col-md-6 col-sm-6 col-xs-12">
-            {% gimmelist article from articles|start(0)|limit(1)|order('publishedAt','desc') if id != currArt %}
-              {% include 'partials/articleGrid__item.html.twig' with {'class' : 'articleGrid__item--fourColumns'} %}
-            {% endgimmelist %}
-            </div>
+						{% set currArt = gimme.article.id %}
+						<div class="articleGrid col-md-6 col-sm-6 col-xs-12">
+						{% gimmelist article from articles|start(0)|limit(1)|order('publishedAt','desc') if id != currArt %}
+							{% include 'partials/articleGrid__item.html.twig' with {'class' : 'articleGrid__item--fourColumns'} %}
+						{% endgimmelist %}
+						</div>
 
-            <div class="articleListSmall col-md-6 col-sm-6 col-xs-12">
-            {% gimmelist article from articles|start(1)|limit(4)|order('publishedAt','desc') %}
-              {% include 'partials/articleListSmall__item.html.twig'  %}
-            {% endgimmelist %}
-            </div>
-          </div>
-        </div>
-      </div>
+						<div class="articleListSmall col-md-6 col-sm-6 col-xs-12">
+						{% gimmelist article from articles|start(1)|limit(4)|order('publishedAt','desc') %}
+							{% include 'partials/articleListSmall__item.html.twig'  %}
+						{% endgimmelist %}
+						</div>
+					</div>
+				</div>
+			</div>
 
-      <div class="banner greyBackground marginBottom30 col-md-12 col-sm-12 col-xs-12">
-        <div class="row">
-          <div class="col-md-6 col-sm-6 col-xs-6">
-            <h2>Subscribe headline</h2>
-            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed eu enim in velit bibendum gravida nec et odio.</p>
-            <a class="button button--blue" href="#">Subscribe</a>
-          </div>
+			<div class="banner greyBackground marginBottom30 col-md-12 col-sm-12 col-xs-12">
+				<div class="row">
+					<div class="col-md-6 col-sm-6 col-xs-6">
+						<h2>Subscribe headline</h2>
+						<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed eu enim in velit bibendum gravida nec et odio.</p>
+						<a class="button button--blue" href="#">Subscribe</a>
+					</div>
 
-          <div class="banner__image col-md-6 col-sm-6 col-xs-6">
-            <a href="#"><img src="{{ asset('theme/img/subscribe_image.png') }}"></a>
-          </div>
-        </div>
-      </div>
-    </div>
+					<div class="banner__image col-md-6 col-sm-6 col-xs-6">
+						<a href="#"><img src="{{ asset('theme/img/subscribe_image.png') }}"></a>
+					</div>
+				</div>
+			</div>
+		</div>
 
-    <div class="col-md-3 col-sm-12 col-xs-12 pull-right">
+		<div class="col-md-3 col-sm-12 col-xs-12 pull-right">
 
-      {% include 'elements/most.html.twig' with {'class' : 'marginBottom30'} %}
+			{% include 'elements/most.html.twig' with {'class' : 'marginBottom30'} %}
 
-      {% container 'frontSidebar' %}{% endcontainer %}
+			{% container 'frontSidebar' %}{% endcontainer %}
 
-    </div>
+		</div>
 
-    <div class="article__arrows hidden-xs hidden-sm hidden-md hidden-lg">
-      <a class="article__arrowItem article__arrowItem--prev" href="#">
-        <div class="article__arrow">
-          <img src="{{ asset('theme/img/arrow_prev.svg') }}">
-        </div>
-        <figure class="article__arrowsImage"><img src="{{ asset('theme/img/article_img/140x140.png') }}"></figure>
-        <div class="article__arrows__text">
-          <span class="article__arrows__kicker">Lorem ipsum</span>
-          <h3 class="article__arrows__headline">Lorem ipsum dolor sit amet, consectetur adipiscing elit</h3>
-          <span class="article__arrows__pointer">Previous article</span>
-        </div>
-      </a>
+		<div class="article__arrows hidden-xs hidden-sm hidden-md hidden-lg">
+			<a class="article__arrowItem article__arrowItem--prev" href="#">
+				<div class="article__arrow">
+					<img src="{{ asset('theme/img/arrow_prev.svg') }}">
+				</div>
+				<figure class="article__arrowsImage"><img src="{{ asset('theme/img/article_img/140x140.png') }}"></figure>
+				<div class="article__arrows__text">
+					<span class="article__arrows__kicker">Lorem ipsum</span>
+					<h3 class="article__arrows__headline">Lorem ipsum dolor sit amet, consectetur adipiscing elit</h3>
+					<span class="article__arrows__pointer">Previous article</span>
+				</div>
+			</a>
 
-      <a class="article__arrowItem article__arrowItem--next" href="#">
-        <div class="article__arrow">
-          <img src="{{ asset('theme/theme/img/arrow_next.svg') }}">
-        </div>
-        <figure class="article__arrowsImage"><img src="{{ asset('theme/img/article_img/140x140.png') }}"></figure>
-        <div class="article__arrows__text">
-          <span class="article__arrows__kicker">Lorem ipsum</span>
-          <h3 class="article__arrows__headline">Lorem ipsum dolor sit amet, consectetur adipiscing elit</h3>
-          <span class="article__arrows__pointer">Next article</span>
-        </div>
-      </a>
-    </div>#}
+			<a class="article__arrowItem article__arrowItem--next" href="#">
+				<div class="article__arrow">
+					<img src="{{ asset('theme/theme/img/arrow_next.svg') }}">
+				</div>
+				<figure class="article__arrowsImage"><img src="{{ asset('theme/img/article_img/140x140.png') }}"></figure>
+				<div class="article__arrows__text">
+					<span class="article__arrows__kicker">Lorem ipsum</span>
+					<h3 class="article__arrows__headline">Lorem ipsum dolor sit amet, consectetur adipiscing elit</h3>
+					<span class="article__arrows__pointer">Next article</span>
+				</div>
+			</a>
+		</div>#}
 
 {{ countPageView(gimme.article) }}
 
