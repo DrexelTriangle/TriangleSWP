@@ -30,8 +30,8 @@
 		</div>
 
 		<div class="single-meta">
-			<div class="author">
-				{# Print author information to page #}
+			<div class="single-author">
+				{# Render author information to page #}
 				{% if gimme.article.authors  %}
 					{% for author in gimme.article.authors %}
 						{# TODO: handle formatting if multiple authors #}
@@ -41,15 +41,37 @@
 					By {{ gimme.article.metadata.byline }}
 				{% endif %}
 
-				{# Print date of article #}
-				<time class="date" datetime="{{ gimme.article.publishedAt|date("c") }}">{{ gimme.article.publishedAt|date("M. j, Y") }}</time>
+				{# Render date of article #}
+				<time class="single-date" datetime="{{ gimme.article.publishedAt|date("c") }}">{{ gimme.article.publishedAt|date("M. j, Y") }}</time>
 
-				{# Print when article was updated, if it was updated #}
+				{# Render when article was updated, if it was updated #}
 				{% if gimme.article.publishedAt|date("M. j, Y") != gimme.article.updatedAt|date("M. j, Y") %}
 					<span> - updated <span>{{ gimme.article.updatedAt|date("M. j, Y") }}</span></span>
 				{% endif %}
+			</div>
 
-				{# TODO: Print share buttons #}
+			{# Render share buttons #}
+			<div class="single-share">
+				<div class="share-container">
+					<button class="share-button" name="Facebook">
+						<img src="{{ asset('theme/img/share-facebook.svg') }}">
+					</button>
+
+					<button class="share-button" name="Twitter">
+						<img src="{{ asset('theme/img/share-twitter.svg') }}">
+					</button>
+
+					<button class="share-button" name="Email">
+						<img src="{{ asset('theme/img/share-mail.svg') }}">
+					</button>
+
+					<button class="share-button" name="More Share Options" style="position:relative;">
+						<img src="{{ asset('theme/img/share-more.svg') }}">	
+						<div class="share-modal">
+							Share
+						</div>
+					</button>
+				</div>
 			</div>
 		</div>
 

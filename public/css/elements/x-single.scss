@@ -18,13 +18,14 @@
 
 .single-meta
 {
+	align-items: flex-start;
 	border-bottom: 1px solid lightgrey;
 	border-top: 1px solid lightgrey;
+	display: flex;
 	min-height: 50px;
 	
-	.author
+	.single-author
 	{
-		display: inline-block;
 		font-family: $triangle-font-main;
 		font-size: 12px;
 		height: 50px;
@@ -38,14 +39,23 @@
 		}
 	}
 	
-	.date
+	.single-date
 	{
-		display: inline-block;
 		font-family: $triangle-font-main;
 		font-size: 12px;
 		height: 50px;
 		line-height: 50px;
 		padding-left: 15px;
+	}
+
+	.single-share
+	{
+		align-self: flex-end;
+		//font-family: $triangle-font-main;
+		//font-size: 12px;
+		height: 50px;
+		line-height: 50px;
+		margin-left: auto;
 	}
 }
 
