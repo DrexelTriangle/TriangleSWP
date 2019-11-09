@@ -12,7 +12,7 @@ $(document).ready(function()
 		}
 		else
 		{
-			$('#searchbox-main').fadeIn().width("100%");
+			$('#searchbox-main').fadeIn().width("250px");
 			$('#searchbox-main').focus();
 			
 			if($(window).width() < 975)
@@ -42,7 +42,7 @@ $(document).ready(function()
 		}
 		else
 		{
-			$('#searchbox-frontpage').fadeIn().width("100%");
+			$('#searchbox-frontpage').fadeIn().width("250px");
 			$('#searchbox-frontpage').focus();
 		}
 			
