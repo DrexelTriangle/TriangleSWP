@@ -1,0 +1,26 @@
+.form-wrapper
+{
+}
+
+.form-field-group
+{
+	display: block;
+	margin-bottom: 10px;
+	margin-top: 10px;
+	width: 100%;
+
+	.form-field-label
+	{
+		display: block;
+		font-weight: 600;
+		margin-bottom: 5px;
+		width: 100%
+	}
+}
+
+.form-submit
+{
+	display: flex;
+	justify-content: end;
+	width: 100%;
+}

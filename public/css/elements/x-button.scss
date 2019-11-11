@@ -1,0 +1,26 @@
+.button
+{
+	background:rgba(255, 255, 255, 0) none repeat scroll 0% 0%;
+	background-color: rgba(255, 255, 255, 0);
+	border: 1px solid rgb(18, 18, 18);
+	border-radius: 3px;
+	color: rgb(18, 18, 18);
+	cursor: pointer;
+	display: block;
+	font-family: $triangle-font-main;
+	font-size: 0.8125rem;
+	font-weight: 600;
+	letter-spacing: 0.0125rem;
+	line-height: 15px;
+	padding: 10px;
+	transition: all 0.6s ease 0s;
+	vertical-align: middle;
+	white-space: nowrap;
+}
+
+.button-primary
+{
+	color: #fff;
+	background: $triangle-color-blue;
+	border: 1px solid $triangle-color-blue;
+}
