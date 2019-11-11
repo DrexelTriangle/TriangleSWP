@@ -42,7 +42,7 @@
 		</figure>
 
 	{% elseif outputType == 'hyperlink' %}
-		<a href="{{ url(article) }}">
+		<a href="{{ url(article) }}" aria-label="{{ article.title }}">
 			<div class="{{ class }}">
 				<img src="{{ rend }}" alt="{{ imgCaption }}" />
 			</div>

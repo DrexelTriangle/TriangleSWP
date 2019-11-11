@@ -55,27 +55,27 @@
 				<ul class="share-container">
 					{% set shareFacebookLink = "https://www.facebook.com/sharer/sharer.php?u=#{ url(gimme.article) }" %}
 					<li class="share-button" name="Facebook">
-						<a href="{{ shareFacebookLink }}" target="_blank">
-							<img src="{{ asset('theme/img/share-facebook.svg') }}">
+						<a href="{{ shareFacebookLink }}" target="_blank" rel="noopener" aria-label="Share on Facebook">
+							<img src="{{ asset('theme/img/share-facebook.svg') }}" alt="Facebook Icon">
 						</a>
 					</li>
 
 					<li class="share-button" name="Twitter">
 						{% set shareTwitterLink = "https://twitter.com/intent/tweet?text=#{ gimme.article.title } - #{ url(gimme.article) }" %}
-						<a href="{{ shareTwitterLink }}" target="_blank">
-							<img src="{{ asset('theme/img/share-twitter.svg') }}">
+						<a href="{{ shareTwitterLink }}" target="_blank" rel="noopener" aria-label="Share on Twitter">
+							<img src="{{ asset('theme/img/share-twitter.svg') }}" alt="Twitter Icon">
 						</a>
 					</li>
 
 					<li class="share-button" name="Email">
 						{% set shareEmailLink = "mailTo:?subject=\"#{ gimme.article.title }\"&body=\"#{ url(gimme.article) }\"" %}
-						<a href="{{ shareEmailLink }}">
-							<img src="{{ asset('theme/img/share-mail.svg') }}">
+						<a href="{{ shareEmailLink }}" aria-label="Share through email">
+							<img src="{{ asset('theme/img/share-mail.svg') }}" alt="Email Icon">
 						</a>
 					</li>
 
 					<li class="share-button" name="More Share Options" style="position:relative;">
-						<img src="{{ asset('theme/img/share-more.svg') }}">	
+						<img src="{{ asset('theme/img/share-more.svg') }}" alt="Share Icon">	
 						<div class="share-modal">
 							Share
 						</div>
@@ -85,7 +85,7 @@
 		</div>
 
 		<div class="single-return">
-			<a href="/">🠘 Return to home</a>
+			<a href="/" aria-label="Return to home">🠘 Return to home</a>
 		</div>
 	</div>
 

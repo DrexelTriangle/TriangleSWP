@@ -10,7 +10,7 @@
 	</div>
 	
 	<div class="search-container">
-		<form class="search-form" id="search" name="search_articles" method="GET" action="/search" role="search">
+		<form class="search-form" id="search-frontpage" name="search_articles" method="GET" action="/search" role="search">
 			<input class="search-textbox" id="searchbox-frontpage" type="text" name="q" placeholder="Search..." value="" name="s">
 		</form>
 	</div>
@@ -31,7 +31,7 @@
 
 	<header id="header-frontpage" class="frontpage-header">
 		<div class="frontpage-logo">
-			<img src="{{ asset('theme/img/logo-black.svg') }}"></img>
+			<img src="{{ asset('theme/img/logo-black.svg') }}" alt="The Triangle"></img>
 		</div>
 		<nav>
 			<div>
@@ -55,7 +55,7 @@
 	<div class="generic-flex-container">
 		<main id="latest-articles" class="flex-main">
 			{# Opinion #}
-			<section id="section-entertainment" class="frontpage-category-main">
+			<section id="section-opinion" class="frontpage-category-main">
 				<h1 class="frontpage-category-title"><a href="/opinion">Opinion</a></h1>
 
 				{# List all articles from current route and limit them to `itemsPerPage` value starting from `start` value #}				
@@ -75,7 +75,7 @@
 			</section>
 
 			{# Sports #}
-			<section id="section-entertainment" class="frontpage-category-main">
+			<section id="section-sports" class="frontpage-category-main">
 				<h1 class="frontpage-category-title"><a href="/sports">Sports</a></h1>
 
 				{# List all articles from current route and limit them to `itemsPerPage` value starting from `start` value #}				

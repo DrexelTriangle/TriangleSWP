@@ -3,7 +3,7 @@
 	<section id="section-news" class="fp-2x3-feature">
 	<div class="feature">
 		{% include 'partials/image-single.html.twig' with { 'outputType' : 'hyperlink', 'rendName' : '600x300' } %}
-		<a class="text-headline-large" href="{{ url(article) }}">{{ article.title }}</a>
+		<a class="text-headline-large" href="{{ url(article) }}" aria-label="{{ article.title }}">{{ article.title }}</a>
 		
 		{% if article.authors %}
 			{% for author in article.authors %} 
@@ -26,12 +26,12 @@
 		<ul class="stories-teaser">
 			<li class="story-item">
 				{% include 'partials/image-single.html.twig' with { 'class' : 'highlights-thumbnail-mobile', 'outputType' : 'hyperlink', 'rendName' : '600x300' } %}
-				<a class="text-headline-medium" href="{{ url(article) }}">{{ article.title }}</a>
+				<a class="text-headline-medium" href="{{ url(article) }}" aria-label="{{ article.title }}">{{ article.title }}</a>
 
 				{% if article.lead == "" %}
 					<div class="category-tease">
 						<a href="{{ url(article) }}">
-							<div class="highlights-thumbnail-desktop"></div>
+							<div class="highlights-thumbnail-desktop" aria-label="{{ article.title }}"></div>
 						</a> 
 						{{ article.body|striptags|safeTruncate(160,"...") }}
 					</div>
@@ -55,11 +55,11 @@
 {% if loop.index == 3 %}
 			<li class="story-item">
 				{% include 'partials/image-single.html.twig' with { 'class' : 'highlights-thumbnail-mobile', 'outputType' : 'hyperlink', 'rendName' : '600x300' } %}
-				<a class="text-headline-medium" href="{{ url(article) }}">{{ article.title }}</a>
+				<a class="text-headline-medium" href="{{ url(article) }}" aria-label="{{ article.title }}">{{ article.title }}</a>
 
 				{% if article.lead == "" %}
 					<div class="category-tease">
-						<a href="{{ url(article) }}">
+						<a href="{{ url(article) }}" aria-label="{{ article.title }}">
 							<div class="highlights-thumbnail-desktop"></div>
 						</a> 
 						{{ article.body|striptags|safeTruncate(160,"...") }}
@@ -87,7 +87,7 @@
 	<div class="right">
 		<ul class="stories-list">
 			<li class="story-item">
-				<a class="text-headline-small" href="{{ url(article) }}">{{ article.title }}</a>
+				<a class="text-headline-small" href="{{ url(article) }}" aria-label="{{ article.title }}">{{ article.title }}</a>
 
 				{% if article.authors %}
 					{% for author in article.authors %} 
@@ -107,7 +107,7 @@
 
 {% if loop.index == 5 %}
 			<li class="story-item">
-				<a class="text-headline-small" href="{{ url(article) }}">{{ article.title }}</a>
+				<a class="text-headline-small" href="{{ url(article) }}" aria-label="{{ article.title }}">{{ article.title }}</a>
 				
 				{% if article.authors %}
 					{% for author in article.authors %} 
@@ -127,7 +127,7 @@
 
 {% if loop.last %}
 			<li class="story-item">
-				<a class="text-headline-small" href="{{ url(article) }}">{{ article.title }}</a>
+				<a class="text-headline-small" href="{{ url(article) }}" aria-label="{{ article.title }}">{{ article.title }}</a>
 				
 				{% if article.authors %}
 					{% for author in article.authors %} 
