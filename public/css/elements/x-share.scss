@@ -3,25 +3,31 @@
 	align-items: center;
 	display: flex;
 	height: 50px;
+	list-style: none;
+	padding: 0px;
+	margin: 0px;
 }
 
 .share-button
 {
+	align-items: center;
 	display: flex;
 	background-color: #eee;
 	border: 1px solid transparent;
 	border-radius: 50%;
-	height: 27px;
-	line-height: 27px;
 	margin: 0px;
 	margin-right: 15px;
-	padding: 5px;
-	width: 27px;
+	padding: 6px;
 
 	&:hover
 	{
 		background: #fff;
 		border: 1px solid #ccc;
+	}
+
+	a
+	{
+		line-height: 0px;
 	}
 
 	img
