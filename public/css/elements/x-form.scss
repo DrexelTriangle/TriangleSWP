@@ -1,20 +1,48 @@
-.form-wrapper
+/*.form-wrapper
 {
+}*/
+
+.form-group
+{
+	margin-bottom: 1rem;
+
+	label
+	{
+		display: inline-block;
+		font-weight: 700;
+		margin-bottom: 0.5rem;
+	}
 }
 
-.form-field-group
+.form-input-group
 {
-	display: block;
-	margin-bottom: 10px;
-	margin-top: 10px;
+	align-items: stretch;
+	display: flex;
+	flex-wrap: wrap;
 	width: 100%;
 
-	.form-field-label
+	.form-input-group-append
 	{
-		display: block;
-		font-weight: 700;
-		margin-bottom: 5px;
-		width: 100%
+		display: flex;
+	}
+}
+
+input.form-control
+{
+	border: 1px solid #ced4da;
+	border-radius: 0.25rem;
+	box-sizing: border-box;
+	flex: 1 1 auto;
+	font-family: $triangle-font-main;
+	font-size: 0.8125rem;
+	font-weight: 400;
+	letter-spacing: 0.0125rem;
+	padding: .375rem .75rem;
+
+	&:focus
+	{
+		border-color: #80bdff;
+		box-shadow: 0 0 0 .2rem rgba(0,123,255,.25);
 	}
 }
 

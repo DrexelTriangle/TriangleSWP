@@ -15,15 +15,20 @@
 		<h1 class="text-title-large">Search results for '{{ app.request.get('q', '') }}'</h1>
 	</div>
 
-	<div class="generic-container">
-		<form id="search" name="search_articles" method="GET" action="/search">
-			<input type="text" name="q" placeholder="search" value="">
-			<button type="submit">Submit</button>           
-		</form>
-	</div>
-
 	<div class="generic-flex-container">
 		<main id="section-articles" class="flex-main">
+			<form id="search" name="search_articles" method="GET" action="/search" class="form-wrapper">
+				<div class="form-group">
+					<label for="search-input">Search again:</label>
+					<div class="form-input-group">
+						<input class="form-control" id="search-input" type="text" name="q" placeholder="Search..." value="{{ app.request.get('q', '') }}" onClick="this.select();">
+						<div class="form-input-group-append">
+							<button class="button button-primary" type="submit">Search</button>
+						</div>
+					</div>
+				</div>
+			</form>
+
 			{% gimmelist article from searchResults|limit(app.request.get('limit', 10))|order(app.request.get('field', 'publishedAt'), app.request.get('direction', 'desc')) with {
 					term: app.request.get('q', ''),
 					page: app.request.get('page', 1),
