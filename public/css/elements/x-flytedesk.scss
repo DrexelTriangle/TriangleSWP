@@ -84,7 +84,10 @@ div.flytead.leaderboard
 	margin: auto;
 }
 
-/*@media screen and (max-width: $screen-target-min)
+@media screen and (max-width: $screen-target-min)
 {
-
-}*/
+	.flytedesk-container-fullpage
+	{
+		display: none;
+	}
+}
