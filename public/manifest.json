@@ -1,0 +1,23 @@
+{
+	"short_name": "The Triangle",
+	"name": "The Triangle",
+	"icons": [
+		{
+		"src": "/img/tri-icon.png",
+		"type": "image/png",
+		"sizes": "192x192"
+		},
+		{
+		"src": "/img/tri-icon.png",
+		"type": "image/png",
+		"sizes": "512x512"
+		}
+	],
+	"start_url": "/?utm_source=pwa",
+	"background_color": "#07294D",
+	"orientation": "portrait",
+	"display": "standalone",
+	"scope": "/",
+	"theme_color": "#07294D",
+	"lang": "en-US"
+}
