@@ -40,8 +40,6 @@
 	<link rel="preconnect" href="http://pagead2.googlesyndication.com">
 </head>
 <body>
-	{# TODO: insert Google Analytics code #}
-
 	{#{% include 'partials/login-popup.html.twig' %}
 
 	{% include 'partials/register-popup.html.twig' %}
@@ -115,6 +113,16 @@
 	<script src="{{ asset('theme/dist/all.js') }}" async></script>
 
 	<script id="dsq-count-scr" src="//triangle.disqus.com/count.js" async></script>
+
+	<!-- Global site tag (gtag.js) - Google Analytics -->
+	<script async src="https://www.googletagmanager.com/gtag/js?id=UA-162588-4"></script>
+	<script>
+		window.dataLayer = window.dataLayer || [];
+		function gtag(){dataLayer.push(arguments);}
+		gtag('js', new Date());
+
+		gtag('config', 'UA-162588-4');
+	</script>
 
 	{# Flytedesk Digital #}
     <script type="text/javascript">
