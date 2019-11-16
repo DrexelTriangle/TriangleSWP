@@ -14,21 +14,12 @@
 	}
 }
 
-.form-input-group
+/* Text box input */
+.form-control[type=text],
+.form-control[type=email],
+.form-control[type=password]
 {
-	align-items: stretch;
-	display: flex;
-	flex-wrap: wrap;
-	width: 100%;
-
-	.form-input-group-append
-	{
-		display: flex;
-	}
-}
-
-input.form-control
-{
+	display: block;
 	border: 1px solid #ced4da;
 	border-radius: 0.25rem;
 	box-sizing: border-box;
@@ -38,6 +29,7 @@ input.form-control
 	font-weight: 400;
 	letter-spacing: 0.0125rem;
 	padding: .375rem .75rem;
+	width: 100%;
 
 	&:focus
 	{
@@ -46,9 +38,29 @@ input.form-control
 	}
 }
 
-.form-submit
+/* Used to make text input/button combo */
+.form-input-group
 {
+	align-items: stretch;
 	display: flex;
-	justify-content: end;
+	flex-wrap: wrap;
 	width: 100%;
+
+	& > .form-control
+	{
+		border-bottom-right-radius: 0px;
+		border-top-right-radius: 0px;
+		width: auto;
+	}
+
+	.form-input-group-append
+	{
+		display: flex;
+
+		& > .button
+		{
+			border-bottom-left-radius: 0px;
+			border-top-left-radius: 0px;
+		}
+	}
 }
