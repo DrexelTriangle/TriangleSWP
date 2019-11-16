@@ -11,13 +11,13 @@
 .share-button
 {
 	align-items: center;
+	cursor: pointer;
 	display: flex;
 	background-color: #eee;
 	border: 1px solid transparent;
 	border-radius: 50%;
 	margin: 0px;
 	margin-right: 15px;
-	padding: 6px;
 
 	&:hover
 	{
@@ -28,6 +28,7 @@
 	a
 	{
 		line-height: 0px;
+		padding: 6px;
 	}
 
 	img
@@ -48,4 +49,9 @@
 	top: 50px;
 	width: 430px;
 	z-index: 100px;
+
+	&.open
+	{
+		display: block;
+	}
 }
