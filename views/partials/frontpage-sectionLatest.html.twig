@@ -3,7 +3,7 @@
 {% endif %}
 
 <li class="story-item">
-	{# TODO: if post has thumbnail #}
+	{# If post has thumbnail #}
 	{% if article.featureMedia %}
 		{% include 'partials/image-single.html.twig' with { 'outputType' : 'hyperlink', 'rendName' : '600x300' } %}
 
