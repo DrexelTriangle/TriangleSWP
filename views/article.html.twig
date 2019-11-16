@@ -19,7 +19,8 @@
 	{% include 'flytedesk/flytedesk-bannerTop.html.twig' %}
 
 	<div class="generic-container" style="margin-bottom: 0px;">
-		<!-- TODO: put logo for print  -->
+		{# Logo will only be displayed when printing #}
+		<div class="print-logo"><img src="{{ asset('theme/img/logo-black.svg') }}"></img></div>
 
 		{# Cache article content and meta data #}
 		{% cache 'article' {gen: gimme.article} %}
@@ -51,7 +52,7 @@
 			</div>
 
 			{# Render share buttons #}
-			<div class="single-share">
+			<div id="share-options" class="single-share">
 				<ul class="share-container">
 					{% set shareFacebookLink = "https://www.facebook.com/sharer/sharer.php?u=#{ url(gimme.article) }" %}
 					<li class="share-button" name="Facebook">
@@ -116,7 +117,7 @@
 			{% endfor %#}
 		</main>
 
-		<aside class="flex-sidebar">
+		<aside id="sidebar" class="flex-sidebar">
 			{% include 'partials/sidebar.html.twig' %}
 		</aside>
 	</div>
