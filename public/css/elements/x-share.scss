@@ -11,7 +11,6 @@
 .share-button
 {
 	align-items: center;
-	cursor: pointer;
 	display: flex;
 	background-color: #eee;
 	border: 1px solid transparent;
@@ -27,6 +26,7 @@
 
 	a
 	{
+		cursor: pointer;
 		line-height: 0px;
 		padding: 6px;
 	}
@@ -43,15 +43,49 @@
 	display: none;
 	background-color: #fff;
 	box-shadow: rgba(0, 0, 0, 0.28) 0px 0px 4px;
-	height: 169px;
 	left: -390px;
 	position: absolute;
 	top: 50px;
 	width: 430px;
-	z-index: 100px;
+	z-index: 1;
 
 	&.open
 	{
 		display: block;
+	}
+
+	.share-modal-container
+	{
+		display: flex;
+		flex-flow: row wrap;
+		list-style: none;
+		padding: 0px;
+		margin: 0px;
+		margin-bottom: .5rem;
+		margin-top: .5rem;
+		width: 100%;
+	}
+
+	.share-modal-block
+	{
+		height: 2.5rem;
+		flex: 0 0 50%;
+		font-size: 0px;
+
+		&:hover
+		{
+			background-color: #E1E1E0;
+		}
+
+		a
+		{
+			color: #000;
+			font-family: $triangle-font-main;
+			font-size: 0.9rem;
+			line-height: 2.5rem;
+			margin: 0px;
+			padding-left: 1rem;
+			text-decoration: none;
+		}
 	}
 }

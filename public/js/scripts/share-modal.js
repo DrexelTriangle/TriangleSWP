@@ -4,5 +4,13 @@ $(document).ready(function()
 	{
 		$('.share-modal').toggleClass('open');
 		evt.stopImmediatePropagation();
-	});
+	});	
+
+	$('body').on('click',function(event)
+	{
+		if($('.share-modal').hasClass('open'))
+		{
+			$('.share-modal').toggleClass('open');
+		}
+	}); 
 });

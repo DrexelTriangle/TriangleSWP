@@ -1,0 +1,68 @@
+{% set shareFacebookLink = "https://www.facebook.com/sharer/sharer.php?u=#{ url(gimme.article) }" %}
+{% set shareTwitterLink = "https://twitter.com/intent/tweet?text=#{ gimme.article.title } - #{ url(gimme.article) }" %}
+{% set shareEmailLink = "mailTo:?subject=\"#{ gimme.article.title }\"&body=\"#{ url(gimme.article) }\"" %}
+{% set shareLinkedInLink = "https://linkedin.com/shareArticle?mini=true&url=#{ url(gimme.article) }&smid=li=share&title=#{ gimme.article.title }" %}
+{% set shareRedditLink = "http://www.reddit.com/submit?url=#{ url(gimme.article) }&title=#{ gimme.article.title }" %}
+
+<div id="share-options" class="single-share">
+	<ul class="share-container">
+		<li class="share-button" name="Facebook">
+			<a href="{{ shareFacebookLink }}" target="_blank" rel="noopener" aria-label="Share on Facebook">
+				<img src="{{ asset('theme/img/share-facebook.svg') }}" alt="Facebook Icon">
+			</a>
+		</li>
+
+		<li class="share-button" name="Twitter">
+			<a href="{{ shareTwitterLink }}" target="_blank" rel="noopener" aria-label="Share on Twitter">
+				<img src="{{ asset('theme/img/share-twitter.svg') }}" alt="Twitter Icon">
+			</a>
+		</li>
+
+		<li class="share-button" name="Email">
+			<a href="{{ shareEmailLink }}" aria-label="Share through email">
+				<img src="{{ asset('theme/img/share-mail.svg') }}" alt="Email Icon">
+			</a>
+		</li>
+
+		<li class="share-button" name="More Share Options" style="position:relative;">
+			<a id="share-more">
+				<img src="{{ asset('theme/img/share-more.svg') }}" alt="Share Icon">	
+			</a>
+
+			<div class="share-modal">
+				<ul class="share-modal-container">
+					<li class="share-modal-block">
+						<a href="{{ shareFacebookLink }}" target="_blank" rel="noopener" aria-label="Share on Facebook">
+							Share on Facebook
+						</a>
+					</li>
+					<li class="share-modal-block">
+						<a href="{{ shareTwitterLink }}" target="_blank" rel="noopener" aria-label="Share on Twitter">
+							Share on Twitter
+						</a>
+					</li>
+					<li class="share-modal-block">
+						<a href="{{ shareEmailLink }}" aria-label="Share through email">
+							Email
+						</a>
+					</li>
+					{#<li class="share-modal-block">
+						<a onClick="">
+							Copy Link
+						</a>
+					</li>#}
+					<li class="share-modal-block">
+						<a href="{{ shareLinkedInLink }}" target="_blank" rel="noopener" aria-label="Share on LinkedIn">
+							Share on LinkedIn
+						</a>
+					</li>
+					<li class="share-modal-block">
+						<a href="{{ shareRedditLink }}" target="_blank" rel="noopener" aria-label="Share on Reddit">
+							Share on Reddit
+						</a>
+					</li>
+				</ul>
+			</div>
+		</li>
+	</ul>
+</div>
