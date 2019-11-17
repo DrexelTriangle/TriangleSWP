@@ -114,65 +114,6 @@
                 "templateName": "trending.html.twig"
             }
         ],
-        "menus": [
-            {
-                "name": "mainNavigation",
-                "label": "Main Navigation",
-                "children": [
-                    {
-                        "name": "news",
-                        "label": "News",
-                        "route": "News"
-                    },
-                    {
-                        "name": "opinion",
-                        "label": "Opinion",
-                        "route": "Opinion"
-                    },
-                    {
-                        "name": "entertainment",
-                        "label": "Entertainment",
-                        "route": "Entertainment"
-                    },                  
-                    {
-                        "name": "sports",
-                        "label": "Sports",
-                        "route": "Sports"
-                    }
-                ]
-            },
-            {
-                "name": "footerPrim",
-                "label": "Footer Navigation",
-                "children": [
-                    {
-                        "name": "local",
-                        "label": "Local",
-                        "route": "Local"
-                    },
-                    {
-                        "name": "business",
-                        "label": "Business",
-                        "route": "Business"
-                    },
-                    {
-                        "name": "lifestyle",
-                        "label": "Lifestyle",
-                        "route": "Lifestyle"
-                    },
-                    {
-                        "name": "culture",
-                        "label": "Culture",
-                        "route": "Culture"
-                    },                    
-                    {
-                        "name": "sports",
-                        "label": "Sports",
-                        "route": "Sports"
-                    }
-                ]
-            }
-        ],
         "contentLists": [
             {
                 "name": "Most commented",
