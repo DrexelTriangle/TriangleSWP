@@ -94,6 +94,12 @@
 			padding-right: 0px;
 			padding-top: 30px;
 			width: 100%;
+
+			&:first-child
+			{
+				margin-bottom: 0px;
+				padding-bottom: 30px;
+			}
 		}
 	}
 }
