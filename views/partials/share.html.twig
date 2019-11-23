@@ -64,5 +64,24 @@
 				</ul>
 			</div>
 		</li>
+
+		{# This button will only be shown on mobile #}
+		<li class="share-button-mobile" name="Share Mobile">
+			<a id="share-mobile" onClick="webShare()" aria-label="Share">
+				<img src="{{ asset('theme/img/share-more.svg') }}" alt="Share Mobile">
+			</a>
+		</li>
 	</ul>
+
+	<script type="text/javascript">
+		function webShare() {
+			if (navigator.share) {
+				navigator.share({
+					title: gimme.article.title,
+					text: gimme.article.lead,
+					url: url(gimme.article),
+				});
+			}
+		}
+	</script>
 </div>

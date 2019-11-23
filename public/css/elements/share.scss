@@ -38,6 +38,29 @@
 	}
 }
 
+.share-button-mobile
+{
+	align-items: center;
+	display: none;
+	background-color: #eee;
+	border: 1px solid transparent;
+	border-radius: 50%;
+	margin: 0px;
+	margin-right: 15px;
+
+	a
+	{
+		line-height: 0px;
+		padding: 6px;
+	}
+
+	img
+	{
+		height: 15px;
+		width: 15px;
+	}
+}
+
 .share-modal
 {
 	display: none;
@@ -87,5 +110,18 @@
 			padding-left: 1rem;
 			text-decoration: none;
 		}
+	}
+}
+
+@media screen and (max-width: $screen-target-min)
+{
+	.share-button
+	{
+		display: none;
+	}
+
+	.share-button-mobile
+	{
+		display: flex;
 	}
 }

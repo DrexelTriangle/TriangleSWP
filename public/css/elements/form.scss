@@ -23,11 +23,12 @@
 	border: 1px solid #ced4da;
 	border-radius: 0.25rem;
 	box-sizing: border-box;
-	flex: 1 1 auto;
+	flex: 1;
 	font-family: $triangle-font-main;
-	font-size: 0.8125rem;
+	font-size: 1rem;
 	font-weight: 400;
-	letter-spacing: 0.0125rem;
+	letter-spacing: 0.03rem;
+	min-width: 0;
 	padding: .375rem .75rem;
 	width: 100%;
 
@@ -43,7 +44,6 @@
 {
 	align-items: stretch;
 	display: flex;
-	flex-wrap: wrap;
 	width: 100%;
 
 	& > .form-control
