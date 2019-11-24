@@ -43,13 +43,13 @@
 		.right
 		{
 			border: none;
+			border-bottom: 1px solid lightgrey;
 			@include flex(0 0 100%);
 			padding: 0px;
 		}
 		
 		.feature
 		{
-			border-bottom: 1px solid lightgrey;
 			order: -1;
 			padding-bottom: 30px;
 			padding-top: 10px;
