@@ -89,6 +89,14 @@
                 "numberOfArticles": 4
             },
             {
+                "name": "Podcasts",
+                "slug": "podcasts",
+                "type": "collection",
+                "templateName": "category-podcast.html.twig",
+                "articlesTemplateName": "podcast.html.twig",
+                "numberOfArticles": 4
+            },
+            {
                 "name": "Home",
                 "slug": "home",
                 "type": "content",
