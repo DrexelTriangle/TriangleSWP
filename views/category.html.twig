@@ -24,7 +24,23 @@
 
 	{# Render the 4 most recent stories if on the first page of the category #}
 	{% if currentPage == 1 %}
-		{% gimmelist article from articles|start(0)|limit(itemsPerPage)|order('publishedAt','desc') %}
+		<div id="section-highlights" class="generic-container">
+			<ol class="highlights-container">
+				{% gimmelist article from articles|start(0)|limit(4)|order('publishedAt','desc') %}
+					{% if loop.index == 3 %}
+						<ol>
+					{% endif %}
+
+					{% include 'partials/category-highlights.html.twig' %}
+
+					{% if loop.last  %}
+						</ol>
+					{% endif %}
+				{% endgimmelist %}
+			</ol>
+		</div>
+
+		{# gimmelist article from articles|start(0)|limit(itemsPerPage)|order('publishedAt','desc') %}
 
 			{% if loop.first %}
 				<div id="section-highlights" class="generic-container">
@@ -65,7 +81,7 @@
 				</div>
 			{% endif %}
 
-		{% endgimmelist %}
+		{% endgimmelist #}
 	{% endif %}
 
 	<div class="generic-flex-container">

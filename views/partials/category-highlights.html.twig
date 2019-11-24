@@ -1,22 +1,24 @@
 {% set timeSinceUpdated = article.updatedAt %}
 
-{#printf('<a href="%1$s"><div class="highlights-thumbnail-desktop">%2$s</div></a>', $link, get_the_post_thumbnail());
-printf('<a href="%1$s"><div class="highlights-thumbnail-mobile">%2$s</div></a>', $link, get_the_post_thumbnail(null, array('class' => '169-preview-medium')));#}
-{# TODO: refactor thumbnail styling to merge desktop/mobile versions #}
-{% include 'partials/image-single.html.twig' with { 'class' : 'highlights-thumbnail-desktop', 'outputType' : 'hyperlink', 'rendName' : '600x300' } %}
+<li>
+	{#printf('<a href="%1$s"><div class="highlights-thumbnail-desktop">%2$s</div></a>', $link, get_the_post_thumbnail());
+	printf('<a href="%1$s"><div class="highlights-thumbnail-mobile">%2$s</div></a>', $link, get_the_post_thumbnail(null, array('class' => '169-preview-medium')));#}
+	{# TODO: refactor thumbnail styling to merge desktop/mobile versions #}
+	{% include 'partials/image-single.html.twig' with { 'outputType' : 'hyperlink', 'rendName' : '600x300' } %}
 
-<a class="text-headline-medium" href="{{ url(article) }}">{{ article.title }}</a>
+	<a class="text-headline-medium" href="{{ url(article) }}">{{ article.title }}</a>
 
-{% if article.lead == "" %}
-	<div class="category-tease">{{ article.body|striptags|safeTruncate(160,"...") }}</div>
-{% else %}
-	<div class="category-tease">{{ article.lead|striptags|safeTruncate(160,"...") }}</div>
-{% endif %}
+	{% if article.lead == "" %}
+		<div class="category-tease">{{ article.body|striptags|safeTruncate(160,"...") }}</div>
+	{% else %}
+		<div class="category-tease">{{ article.lead|striptags|safeTruncate(160,"...") }}</div>
+	{% endif %}
 
-{% if article.authors %}
-	{% for author in article.authors %} 
-		<div class="category-author">{{ article.updatedAt|date("M. j, Y") }} <!--ago--> • By {{ author.name }}</div>
-	{% endfor %}
-	{% elseif article.metadata.byline %}
-		<div class="category-author">{{ article.updatedAt|date("M. j, Y") }} <!--ago--> • By {{ article.metadata.byline }}</div>
-{% endif %}
+	{% if article.authors %}
+		{% for author in article.authors %} 
+			<div class="category-author">{{ article.updatedAt|date("M. j, Y") }} <!--ago--> • By {{ author.name }}</div>
+		{% endfor %}
+		{% elseif article.metadata.byline %}
+			<div class="category-author">{{ article.updatedAt|date("M. j, Y") }} <!--ago--> • By {{ article.metadata.byline }}</div>
+	{% endif %}
+</li>
