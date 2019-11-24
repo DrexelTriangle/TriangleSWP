@@ -3,12 +3,12 @@
 	"name": "The Triangle",
 	"icons": [
 		{
-		"src": "/img/tri-icon.png",
+		"src": "/public/img/pwa-icon.png",
 		"type": "image/png",
 		"sizes": "192x192"
 		},
 		{
-		"src": "/img/tri-icon.png",
+		"src": "/public/img/pwa-icon.png",
 		"type": "image/png",
 		"sizes": "512x512"
 		}
