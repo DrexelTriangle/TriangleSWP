@@ -103,7 +103,7 @@
             {
                 "name": "Search",
                 "slug": "search",
-                "type": "content",
+                "type": "collection",
                 "templateName": "search.html.twig",
                 "articlesTemplateName": "article.html.twig"
             },
