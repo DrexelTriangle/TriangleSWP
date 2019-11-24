@@ -1,31 +1,31 @@
 $(document).ready(function()
-{	
+{
 	// Global search - Open and focus search box when search icon is clicked
 	$('#header-search-icon').click(function(evt)
 	{
-		if($('#searchbox-main').is(':visible'))
+		if($('#searchbox-main').width() > 0)
 		{
-			$('#searchbox-main').width("0px").fadeOut(800);
+			$('#searchbox-main').removeClass('open');
 			
 			if($(window).width() < 975)
 				$('#logo-mobile').fadeIn(400);
 		}
 		else
 		{
-			$('#searchbox-main').fadeIn().width("250px");
+			$('#searchbox-main').addClass('open');
 			$('#searchbox-main').focus();
-			
+
 			if($(window).width() < 975)
 				$('#logo-mobile').fadeOut();
 		}
-			
+
 		evt.stopImmediatePropagation();
 	});
 	
 	// Global search - Close search box when the user clicks out of focus
 	$('#searchbox-main').focusout(function(evt)
 	{
-		$('#searchbox-main').width("0px").fadeOut(400);
+		$('#searchbox-main').removeClass('open');
 		
 		if($(window).width() < 975)
 				$('#logo-mobile').fadeIn(800);
@@ -36,13 +36,13 @@ $(document).ready(function()
 	// Frontpage search - Open and focus search box when search icon is clicked
 	$('#search-icon-frontpage').click(function(evt)
 	{
-		if($('#searchbox-frontpage').is(':visible'))
+		if($('#searchbox-frontpage').width() > 0)
 		{
-			$('#searchbox-frontpage').width("0px").fadeOut(400);
+			$('#searchbox-frontpage').removeClass('open');
 		}
 		else
 		{
-			$('#searchbox-frontpage').fadeIn().width("250px");
+			$('#searchbox-frontpage').addClass('open');
 			$('#searchbox-frontpage').focus();
 		}
 			
@@ -52,7 +52,7 @@ $(document).ready(function()
 	// Frontpage search - Close search box when the user clicks out of focus
 	$('#searchbox-frontpage').focusout(function(evt)
 	{
-		$('#searchbox-frontpage').width("0px").fadeOut(400);
+		$('#searchbox-frontpage').removeClass('open');
 		evt.stopImmediatePropagation();
 	});
 });
